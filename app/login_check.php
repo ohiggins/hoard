@@ -25,11 +25,11 @@ function get_key($bit_length = 128){
 $current_user = array();
 $current_user['loggedin'] = false;
 
-if (isset($_COOKIE['test_session']) && trim($_COOKIE['test_session']) != '') { // user has a session already?
+if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') { // user has a session already?
 	
 	require_once('dbconn_mysql.php');
 	
-	$user_session_complete_token = trim($_COOKIE['test_session']);
+	$user_session_complete_token = trim($_COOKIE['hoard_session']);
 	if (strpos($user_session_complete_token, ':') === false) {
 		// invalid token format
 		header('Location: /logout/');
@@ -53,7 +53,7 @@ if (isset($_COOKIE['test_session']) && trim($_COOKIE['test_session']) != '') { /
 			$current_user['loggedin'] = true;
 			$current_user['user_id'] = $current_user_id;
 			$new_session_key_expires = time() + (60*60*24*30);
-			setcookie('test_session', $user_session_complete_token, $new_session_key_expires, '/', 'cylesoft.com');
+			setcookie('hoard_session', $new_session_complete_token, $new_session_key_expires, '/', 'hoard.localhost:8888');
 			$update_session_expiry = $mysqli->query("UPDATE user_sessions SET expires=$new_session_key_expires WHERE session_key=$user_session_key_db AND user_id=$current_user_id");
 			if ($_SERVER['PHP_SELF'] == 'login.php') {
 				header('Location: protected.php');
@@ -97,7 +97,7 @@ if (isset($_COOKIE['test_session']) && trim($_COOKIE['test_session']) != '') { /
 		$current_user_row = $check_for_user->fetch_assoc();
 		
 		// check password
-		if (crypt(trim($_POST['p']), $current_user_row['pwrdlol']) != $current_user_row['pwrdlol']) {
+		if (crypt(trim($_POST['p']), $current_user_row['password']) != $current_user_row['password']) {
 			if (!$has_flood_control_limit) {
 				$insert_flood_control = $mysqli->query("INSERT INTO login_flood_control (ipaddr, attempts, tsc) VALUES ($attempt_ip_db, 1, UNIX_TIMESTAMP())");
 			}
@@ -121,7 +121,7 @@ if (isset($_COOKIE['test_session']) && trim($_COOKIE['test_session']) != '') { /
 		$new_session_secret_salt = substr(get_key(256), 0, 22); // make a new 22-character salt
 		$new_session_secret_hash = crypt($new_session_secret, '$2y$12$' . $new_session_secret_salt);
 		$new_session_key_expires = time() + (60*60*24*30);
-		setcookie('test_session', $new_session_complete_token, $new_session_key_expires, '/', 'cylesoft.com');
+		setcookie('hoard_session', $new_session_complete_token, $new_session_key_expires, '/', 'hoard.localhost');
 		
 		// write session to database with hashed secret
 		$new_session_key_db = "'".$mysqli->escape_string($new_session_key)."'";

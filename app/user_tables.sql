@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `user_sessions` (
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(250) NOT NULL,
-  `pwrdlol` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `tsc` int(11) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
