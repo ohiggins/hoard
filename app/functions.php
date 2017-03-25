@@ -7,6 +7,7 @@
 class User
 {
 	var $user;
+	var $author;
 	
 	function set_id($current_id) { 
 		$this->id = $current_id;  
@@ -79,6 +80,15 @@ class Snippet
 		$snippet_date = mysqli_query($mysqli, "SELECT snippet_published FROM snippets WHERE snippet_id = $id");
 		if ($row_snippets = mysqli_fetch_array($snippet_date, MYSQLI_ASSOC)) {
 			return htmlentities($row_snippets['snippet_published']);	
+		}
+	}
+	
+	function get_author() {
+		include('db.php');
+		$id = $this->id;
+		$snippet_date = mysqli_query($mysqli, "SELECT snippet_author FROM snippets WHERE snippet_id = $id");
+		if ($row_snippets = mysqli_fetch_array($snippet_date, MYSQLI_ASSOC)) {
+			return htmlentities($row_snippets['snippet_author']);	
 		}
 	}
  }

@@ -8,6 +8,10 @@
 	}
 	$snippet = new Snippet();
 	$snippet->set_id($id); 
+	
+	$author = new User();
+	$authorid = $snippet->get_author();
+	$author->set_id($authorid);
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -35,12 +39,10 @@ if($id and $snippet->get_title()) {
 ?>
 
 
-<?php
 
-    echo $snippet->get_title();
-    echo $snippet->get_date();
+    <h2><?php echo $snippet->get_title(); ?></h2>
+
  
-?>
 	  </div>
 
  <div class="col-lg-8">
@@ -64,7 +66,7 @@ if($id and $snippet->get_title()) {
 				
 				<?php }
 					} else {
-				echo 'No entries found!';
+				echo '<div class="callout callout-warning"><h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No entries found!</h4><p>Try adding a code entry to this snippet.</p></div>';
 			}
 	?>
 	
@@ -72,21 +74,40 @@ if($id and $snippet->get_title()) {
 	
 </div>
  <div class="col-lg-4">
-	 options
+	 <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-yellow">
+              <div class="widget-user-image">
+                <img class="img-circle" src="<?php echo $author->get_gravatar(); ?>g" alt="User Avatar">
+              </div>
+              <!-- /.widget-user-image -->
+              <h3 class="widget-user-username"><?php $author->get_name(); ?></h3>
+              <h5 class="widget-user-desc">Lead Developer</h5>
+            </div>
+            <div class="box-footer no-padding">
+              <ul class="nav nav-stacked">
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Tasks</a></li>
+                <li><a href="#">Completed Projects</a></li>
+                <li><a href="#">Followers</a></li>
+              </ul>
+            </div>
+          </div>
  </div>
 	</div>
   
-   <?php 
-	 } else {
-	echo '</div></div>';
-	echo 'Snippet not found';
-}
-	 ?>
+<?php 
+	} 
+	else {
+	echo '</div></div>
+		<div class="callout callout-danger">
+        <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Snippet not found!</h4>
+        <p>It may have been deleted by the author.</p>
+        </div>';
+	}
+	?>
   
 </div>
-
-
-<!-- Ace Editor -->
 
 
 

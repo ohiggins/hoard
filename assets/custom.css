@@ -18,3 +18,17 @@
 	width: 100%;
 	padding: 25px;
 }
+
+.callout i {
+	margin-right: 10px;
+}
+
+.logo-lg {
+	text-align: left;
+}
+
+.logo-lg img {
+	height: 30px;
+	margin-top: -3px;
+	text-align: left;
+}
