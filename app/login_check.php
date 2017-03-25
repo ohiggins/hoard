@@ -1,5 +1,7 @@
 <?php
 
+include('config.php');
+
 // see if user is currently logged in
 // or trying to log in
 // check for cookie
@@ -27,7 +29,7 @@ $current_user['loggedin'] = false;
 
 if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') { // user has a session already?
 	
-	require_once('dbconn_mysql.php');
+	require_once('db.php');
 	
 	$user_session_complete_token = trim($_COOKIE['hoard_session']);
 	if (strpos($user_session_complete_token, ':') === false) {
@@ -53,7 +55,7 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 			$current_user['loggedin'] = true;
 			$current_user['user_id'] = $current_user_id;
 			$new_session_key_expires = time() + (60*60*24*30);
-			setcookie('hoard_session', $new_session_complete_token, $new_session_key_expires, '/', 'hoard.localhost:8888');
+			setcookie('hoard_session', $new_session_complete_token, $new_session_key_expires, '/', $baseurl);
 			$update_session_expiry = $mysqli->query("UPDATE user_sessions SET expires=$new_session_key_expires WHERE session_key=$user_session_key_db AND user_id=$current_user_id");
 			if ($_SERVER['PHP_SELF'] == 'login.php') {
 				header('Location: protected.php');
@@ -68,7 +70,7 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 	
 } else if (isset($_POST['e']) && isset($_POST['p'])) { // user is trying to log in?
 	
-	require_once('dbconn_mysql.php');
+	require_once('db.php');
 	
 	// login flood control
 	$has_flood_control_limit = false;

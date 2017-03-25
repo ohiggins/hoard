@@ -1,5 +1,7 @@
 <?php
 
+include('config.php');
+
 // make a new goddamn user
 
 if (!isset($_POST['e']) || trim($_POST['e']) == '') {
