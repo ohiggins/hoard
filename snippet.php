@@ -44,10 +44,10 @@ if($id and $snippet->get_title()) {
 	  </div>
 
  <div class="col-lg-8">
-	<b>Snippet content:</b>
 	
 	<?php
 		$row_entries = mysqli_query($mysqli, "SELECT * FROM snippets_entries WHERE snippet_id = '$id'");
+		if ($entries = mysqli_fetch_array($row_entries, MYSQLI_ASSOC)) {
 		while ($entries = mysqli_fetch_array($row_entries, MYSQLI_ASSOC)) {
 			
 				$id = $entries['entry_id'];
@@ -61,8 +61,10 @@ if($id and $snippet->get_title()) {
 			    editor.setTheme("ace/theme/twilight");
 			    editor.getSession().setMode("ace/mode/javascript");
 			</script>
-			<?php
-		} 
+				<?php }
+					} else {
+				echo 'No entries found!';
+			}
 	?>
 	
 	
