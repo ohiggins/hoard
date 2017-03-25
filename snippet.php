@@ -31,7 +31,7 @@
 	  <div class="col-lg-12">
 
 <?php
-if(!empty($_GET["id"])) {
+if($id and $snippet->get_title()) {
 ?>
 
 
