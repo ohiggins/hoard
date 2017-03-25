@@ -64,17 +64,17 @@ $user->set_id($current_user['user_id']);
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="<?php echo $user->get_gravatar(); ?>" class="user-image" alt="User Image">
               <span class="hidden-xs">Good evening, <?php echo $user->get_name(); ?>!</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?php echo $user->get_gravatar(); ?>" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $user->get_name(); ?>
-                  <small>Lorem ipsum dolor sit amet</small>
+                  <small><?php echo $user->get_email(); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -103,7 +103,7 @@ $user->set_id($current_user['user_id']);
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?php echo $user->get_gravatar(); ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $user->get_name(); ?></p>

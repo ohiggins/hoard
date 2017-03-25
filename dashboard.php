@@ -31,7 +31,7 @@ $user->set_id($current_user['user_id']);
 
 
 <div class="col-xs-3" style="padding: 0;">
-	<div style="height: calc(100vh - 150px); overflow-y: scroll; overflow-x: hidden;">
+	<div style="height: calc(100vh - 135px); overflow-y: scroll; overflow-x: hidden;">
     <ul class="nav nav-tabs tabs-left">
 	    <?php
 		    $i = 0;

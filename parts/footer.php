@@ -4,10 +4,9 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> PRE-ALPHA
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Powered by <a href="https://github.com/xadz/hoard">Hoard</a>.</strong>
   </footer>
 
   </div>
