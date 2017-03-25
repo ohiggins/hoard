@@ -8,6 +8,10 @@ if (!isset($_POST['title']) || trim($_POST['title']) == '') {
 	die('you forgot to put in a title');
 }
 
+if (!isset($_POST['entry']) || trim($_POST['entry']) == '') {
+	die('you forgot to put in an entrys');
+}
+
 session_start();
 $userid = $_SESSION['userid'];
 
@@ -23,9 +27,25 @@ $new_snippet = $mysqli->query("INSERT INTO snippets (snippet_title, snippet_publ
 if (!$new_snippet) {
 	die('error creating new snippet: '.$mysqli->error);
 }
-
 $new_snippet = $mysqli->insert_id;
+
+
+
+
+
+$new_entry_content = "'".$mysqli->escape_string(trim($_POST['entry']))."'";
+$new_entry = $mysqli->query("INSERT INTO snippets_entries (snippet_id, entry_content) VALUES ($mysqli->insert_id, $new_entry_content)");
+if (!$new_snippet) {
+	die('error creating new entry: '.$mysqli->error);
+}
+
+
+
+
+
 
 header('Location: ../add.php?snippet_success');
 
 ?>
+
+

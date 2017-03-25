@@ -29,6 +29,8 @@ $_SESSION['userid'] = $current_user['user_id'];
 <form action="app/add_process.php" method="post">
 	
 <p><label>Snippet Title:</label> <input tabindex="1" id="start-here" name="title" type="text" placeholder="test" /></p>
+<p><label>Snippet Entry:</label> <textarea name="entry" type="text"></textarea></p>
+
 <p><input tabindex="5" type="submit" value="add snippet" /></p>
 </form>
 </div>
