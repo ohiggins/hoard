@@ -8,10 +8,7 @@ $_SESSION['userid'] = $current_user['user_id'];
 
 ?>
 
-<html>
-<head>
-<title>add snippet</title>
-</head>
+<?php include('parts/header.php'); ?>
 
 <div id="register-prompt">
 <h1>add snippet</h1>
@@ -20,6 +17,5 @@ $_SESSION['userid'] = $current_user['user_id'];
 <p><label>Snippet Title:</label> <input tabindex="1" id="start-here" name="title" type="text" placeholder="test" /></p>
 <p><input tabindex="5" type="submit" value="add snippet" /></p>
 </form>
-</div>
 
-</html>
+<?php include('parts/footer.php'); ?>
