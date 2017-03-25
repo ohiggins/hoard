@@ -1,16 +1,16 @@
 <?php
-
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
-$login_required = true;
-require_once('app/login_check.php');
-
+	include('parts/header.php');
+	
+	if(!empty($_GET["id"])) {
+		$id = htmlspecialchars($_GET["id"]);
+	} else {
+		$id = false;
+	}
+	$snippet = new Snippet();
+	$snippet->set_id($id); 
 ?>
 
-<?php include('parts/header.php'); ?>
-
-  <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header" style="background: red; height: 50px;">
@@ -26,39 +26,33 @@ require_once('app/login_check.php');
 
 <script src="/assets/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 
-<p>
+<div class="stretch-container">
+  <div class="row">
+	  <div class="col-lg-12">
+
 <?php
-
 if(!empty($_GET["id"])) {
-	$id = htmlspecialchars($_GET["id"]);
-} else {
-	$id = false;
-}
+?>
 
-if ($id == true) {
 
+<?php
 	
-include('app/db.php');
-$snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_id = '$id'");
+
 
 echo "<table>";
 
-if ($row_users = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
+if ($row_snippets = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
     //output a row here
-    echo "<tr><td>".(htmlentities($row_users['snippet_title']))."</td></tr>";
-    echo "<tr><td>".(htmlentities($row_users['snippet_published']))."</td></tr>";
-
+    echo $snippet->get_title();
+    echo $snippet->get_date();
 
 echo "</table>";
 
-} else {
-
-	echo 'Please select a snippet ID.';
-}
+} 
 ?>
-</p>
+	  </div>
 
-<p>
+ <div class="col-lg-8">
 	<b>Snippet content:</b>
 	<?php
 		$row_entries = mysqli_query($mysqli, "SELECT * FROM snippets_entries WHERE snippet_id = '$id'");
@@ -76,15 +70,22 @@ echo "</table>";
 		} 
 		
 
-} else {
+	?>
+</div>
+ <div class="col-lg-4">
+	 options
+ </div>
+	</div>
+  
+   <?php 
+	 } else {
+	echo '</div></div>';
 	echo 'Snippet not found';
 }
+	 ?>
+  
+</div>
 
-	?>
-</p>
-
-</body>
-</html>
 
 <!-- Ace Editor -->
 

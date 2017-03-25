@@ -13,3 +13,8 @@
 	width: 100%;
 	height: 400px;
 }
+
+.stretch-container {
+	width: 100%;
+	padding: 25px;
+}

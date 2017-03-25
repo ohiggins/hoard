@@ -4,9 +4,8 @@ ini_set("display_errors", 1);
 
 $login_required = true;
 require_once('app/login_check.php');
-
+include('app/config.php'); 
 include('app/functions.php'); 
-
 include('app/db.php');
 $snippets = mysqli_query($mysqli, "SELECT * FROM snippets");
 

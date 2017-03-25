@@ -1,15 +1,13 @@
-<?php
-	
-include('config.php');
+<?php	
 
+/**
+	User Class
+**/
 
 class User
 {
-
-	
 	var $user;
-
-
+	
 	function set_id($current_id) { 
 		$this->id = $current_id;  
  	}
@@ -46,7 +44,43 @@ class User
 			echo 'https://www.gravatar.com/avatar/' . md5($email) . '?d=mm"';	
 		}
 	}
-
+ }
+ 
+ 
+/**
+	Parent Snippet Class
+**/
+ 
+class Snippet
+{
+	var $snippet;
+	
+	function set_id($current_id) { 
+		$this->id = $current_id;  
+ 	}
+ 
+   	function get_id() {
+   		$id = $this->id;
+   		return $id;
+	}
+	
+	function get_title() {
+		include('db.php');
+		$id = $this->id;
+		$snippet_title = mysqli_query($mysqli, "SELECT snippet_title FROM snippets WHERE snippet_id = $id");
+		if ($row_snippets = mysqli_fetch_array($snippet_title, MYSQLI_ASSOC)) {
+			echo htmlentities($row_snippets['snippet_title']);	
+		}
+	}
+	
+	function get_date() {
+		include('db.php');
+		$id = $this->id;
+		$snippet_date = mysqli_query($mysqli, "SELECT snippet_published FROM snippets WHERE snippet_id = $id");
+		if ($row_snippets = mysqli_fetch_array($snippet_date, MYSQLI_ASSOC)) {
+			echo htmlentities($row_snippets['snippet_published']);	
+		}
+	}
  }
 
 
