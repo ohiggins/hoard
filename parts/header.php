@@ -1,3 +1,21 @@
+<?php 
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+$login_required = true;
+require_once('app/login_check.php');
+
+include('app/functions.php'); 
+
+include('app/db.php');
+$snippets = mysqli_query($mysqli, "SELECT * FROM snippets");
+
+$user = new User();
+$user->set_id($current_user['user_id']); 
+
+	
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +31,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="assets/dist/css/skins/skin-yellow.min.css">
+  <link rel="stylesheet" href="assets/custom.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +65,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Good evening, Alexander Pierce!</span>
+              <span class="hidden-xs">Good evening, <?php echo $user->get_name(); ?>!</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -54,8 +73,8 @@
                 <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Adam Greenough!
-                  <small>Member since Nov. 2012</small>
+                  <?php echo $user->get_name(); ?>
+                  <small>Lorem ipsum dolor sit amet</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -64,14 +83,14 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="/logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="#"><i class="fa fa-gears"></i></a>
           </li>
         </ul>
       </div>
@@ -87,7 +106,7 @@
           <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?php echo $user->get_name(); ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -116,19 +135,3 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
