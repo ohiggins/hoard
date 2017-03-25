@@ -36,41 +36,37 @@ if(!empty($_GET["id"])) {
 
 
 <?php
-	
 
-
-echo "<table>";
-
-if ($row_snippets = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
-    //output a row here
     echo $snippet->get_title();
     echo $snippet->get_date();
-
-echo "</table>";
-
-} 
+ 
 ?>
 	  </div>
 
  <div class="col-lg-8">
 	<b>Snippet content:</b>
+	
 	<?php
 		$row_entries = mysqli_query($mysqli, "SELECT * FROM snippets_entries WHERE snippet_id = '$id'");
-		
 		while ($entries = mysqli_fetch_array($row_entries, MYSQLI_ASSOC)) {
-		    //output a row here
-		    echo '<div id="editor-'. (htmlentities($entries['entry_id'])) . '">'.(htmlentities($entries['entry_content'])).'</div>';
+			
+				$id = $entries['entry_id'];
+				$entry = new Entry();
+				$entry->set_id($id); 
+
+		    echo '<div id="editor-' . $entry->get_id() . '">' . $entry->get_content() . '</div>';
 		    ?>
 		    <script>
-			    var editor = ace.edit("editor-" + "<?php echo (htmlentities($entries['entry_id'])); ?>");
+			    var editor = ace.edit("editor-" + "<?php echo $entry->get_id(); ?>");
 			    editor.setTheme("ace/theme/twilight");
 			    editor.getSession().setMode("ace/mode/javascript");
 			</script>
 			<?php
 		} 
-		
-
 	?>
+	
+	
+	
 </div>
  <div class="col-lg-4">
 	 options

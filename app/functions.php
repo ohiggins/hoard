@@ -69,7 +69,7 @@ class Snippet
 		$id = $this->id;
 		$snippet_title = mysqli_query($mysqli, "SELECT snippet_title FROM snippets WHERE snippet_id = $id");
 		if ($row_snippets = mysqli_fetch_array($snippet_title, MYSQLI_ASSOC)) {
-			echo htmlentities($row_snippets['snippet_title']);	
+			return htmlentities($row_snippets['snippet_title']);	
 		}
 	}
 	
@@ -78,9 +78,39 @@ class Snippet
 		$id = $this->id;
 		$snippet_date = mysqli_query($mysqli, "SELECT snippet_published FROM snippets WHERE snippet_id = $id");
 		if ($row_snippets = mysqli_fetch_array($snippet_date, MYSQLI_ASSOC)) {
-			echo htmlentities($row_snippets['snippet_published']);	
+			return htmlentities($row_snippets['snippet_published']);	
 		}
 	}
+ }
+ 
+
+ 
+/**
+	Snippet Entry Class
+**/
+ 
+class Entry
+{
+	var $entry;
+	
+	function set_id($current_id) { 
+		$this->id = $current_id;  
+ 	}
+ 
+   	function get_id() {
+   		$id = $this->id;
+   		return $id;
+	}
+	
+	function get_content() {
+		include('db.php');
+		$id = $this->id;
+		$entry_content = mysqli_query($mysqli, "SELECT entry_content FROM snippets_entries WHERE entry_id = $id");
+		if ($row_entries = mysqli_fetch_array($entry_content, MYSQLI_ASSOC)) {
+			return htmlentities($row_entries['entry_content']);	
+		}
+	}
+	
  }
 
 
