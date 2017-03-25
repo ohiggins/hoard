@@ -2,11 +2,11 @@
 
 // login page if they are not already logged in
 
-require_once('login_check.php');
+require_once('app/login_check.php');
 
 // otherwise, wtf? 
 if (isset($current_user) && isset($current_user['loggedin']) && $current_user['loggedin'] == true) {
-	header('Location: protected.php');
+	header('Location: dashboard.php');
 	die();
 }
 

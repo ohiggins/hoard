@@ -1,6 +1,6 @@
 <?php
 
-require_once('login_check.php');
+require_once('app/login_check.php');
 
 ?>
 <!-- page not protected by a login -->

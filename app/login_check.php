@@ -34,7 +34,7 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 	$user_session_complete_token = trim($_COOKIE['hoard_session']);
 	if (strpos($user_session_complete_token, ':') === false) {
 		// invalid token format
-		header('Location: /logout/');
+		header('Location: ../logout.php');
 		die();
 	} else {
 		// using the proper session key/secret token system
@@ -47,7 +47,7 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 			// validate secret
 			if (crypt($user_session_pieces[1], $user_session_row['session_secret']) != $user_session_row['session_secret']) {
 				// something is wrong, try again!
-				header('Location: logout.php');
+				header('Location: ../logout.php');
 				die();
 			}
 			// ok, they're cool
@@ -55,15 +55,18 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 			$current_user['loggedin'] = true;
 			$current_user['user_id'] = $current_user_id;
 			$new_session_key_expires = time() + (60*60*24*30);
-			setcookie('hoard_session', $new_session_complete_token, $new_session_key_expires, '/', $baseurl);
+			$new_session_key = get_key(256);
+			$new_session_secret = get_key(256);
+			$new_session_complete_token = $new_session_key.':'.$new_session_secret;
+			setcookie('hoard_session', $new_session_complete_token, $new_session_key_expires, '/', 'hoard.localhost:8888');
 			$update_session_expiry = $mysqli->query("UPDATE user_sessions SET expires=$new_session_key_expires WHERE session_key=$user_session_key_db AND user_id=$current_user_id");
 			if ($_SERVER['PHP_SELF'] == 'login.php') {
-				header('Location: protected.php');
+				header('Location: ../dashboard.php');
 				die();
 			}
 		} else {
 			// session is expired, make them log in again!
-			header('Location: logout.php');
+			header('Location: ../logout.php');
 			die();
 		}
 	}
@@ -131,7 +134,7 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 		$new_session_row = $mysqli->query("INSERT INTO user_sessions (session_key, session_secret, user_id, expires, ts) VALUES ($new_session_key_db, $new_session_secret_hash_db, $current_user_id, $new_session_key_expires, UNIX_TIMESTAMP())");		
 		
 		// logged in, cool
-		header('Location: protected.php');
+		header('Location: ../dashboard.php');
 		die();
 	} else {
 		if (!$has_flood_control_limit) {
@@ -142,7 +145,7 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 				
 } else if (isset($login_required) && $login_required == true) {
 	
-	header('Location: login.php');
+	header('Location: login.php?forbidden');
 	die();
 	
 }
