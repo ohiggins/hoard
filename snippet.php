@@ -24,12 +24,8 @@ require_once('app/login_check.php');
       </ol>
     </section>
 
-<!-- page protected by a login -->
-<html>
-<head>
-<title>protected page test</title>
-</head>
-<body
+<script src="/assets/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+
 <p>
 <?php
 
@@ -51,9 +47,7 @@ if ($row_users = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
     //output a row here
     echo "<tr><td>".(htmlentities($row_users['snippet_title']))."</td></tr>";
     echo "<tr><td>".(htmlentities($row_users['snippet_published']))."</td></tr>";
-} else {
-	echo 'Snippet not found';
-}
+
 
 echo "</table>";
 
@@ -63,7 +57,37 @@ echo "</table>";
 }
 ?>
 </p>
+
+<p>
+	<b>Snippet content:</b>
+	<?php
+		$row_entries = mysqli_query($mysqli, "SELECT * FROM snippets_entries WHERE snippet_id = '$id'");
+		
+		while ($entries = mysqli_fetch_array($row_entries, MYSQLI_ASSOC)) {
+		    //output a row here
+		    echo '<div id="editor-'. (htmlentities($entries['entry_id'])) . '">'.(htmlentities($entries['entry_content'])).'</div>';
+		    ?>
+		    <script>
+			    var editor = ace.edit("editor-" + "<?php echo (htmlentities($entries['entry_id'])); ?>");
+			    editor.setTheme("ace/theme/twilight");
+			    editor.getSession().setMode("ace/mode/javascript");
+			</script>
+			<?php
+		} 
+		
+
+} else {
+	echo 'Snippet not found';
+}
+
+	?>
+</p>
+
 </body>
 </html>
+
+<!-- Ace Editor -->
+
+
 
 <?php include('parts/footer.php'); ?>
