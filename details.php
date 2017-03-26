@@ -59,6 +59,19 @@ if($snippet->get_author() == $user->get_id()) {
                   <option value="2">Public</option>
                 </select>
                 </p>
+                
+             <p><label>Snippet Labels:</label>
+                	    <?php
+	                	    include('app/db.php');
+							$labels = mysqli_query($mysqli, "SELECT * FROM labels");
+							if ($labels AND $labels->num_rows !== 0) {
+							while ($row_labels = mysqli_fetch_array($labels, MYSQLI_ASSOC)) {
+								echo "<input type='checkbox' name='label-" . $row_labels['label_id'] . "'>" . $row_labels['label_name'] . $row_labels['label_hex'];
+							} } else {
+								echo 'Please add a label!';
+							}
+							
+						?>
 
 <p><input type="submit" value="add snippet" /></p>
 </form>
