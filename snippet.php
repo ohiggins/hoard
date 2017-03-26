@@ -67,12 +67,14 @@ $author->set_id($authorid);
 	<?php
 		if($id and $snippet->get_title()) {
 	?>
-	
-    <h2><?php echo $snippet->get_title(); ?></h2>
 
 			</div>
 
 			<div class="col-lg-8">
+					
+			    <h2><?php echo $snippet->get_title(); ?></h2>
+			    <p>Lorem ipsum dolor sit amet.</p>
+			    <hr>
 	
 				<?php
 				$row_entries = mysqli_query($mysqli, "SELECT * FROM snippets_entries WHERE snippet_id = '$id'");
@@ -80,9 +82,15 @@ $author->set_id($authorid);
 					while ($entries = mysqli_fetch_array($row_entries, MYSQLI_ASSOC)) {
 						$id = $entries['entry_id'];
 						$entry = new Entry();
-						$entry->set_id($id); 
-						echo $entry->get_name(); 
-						echo '<a href="/edit.php?id=' . $entry->get_id() . '">edit</a>';
+						$entry->set_id($id);
+				?>
+				
+				<div class="entry-header">
+					<i class="fa fa-code" aria-hidden="true"></i> <?php echo $entry->get_name(); ?>
+					<div class="pull-right"><a href="/edit.php?id=<?php echo $entry->get_id() ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT</a></div>
+				</div>
+				
+				<?php	 
 						echo '<div id="editor-' . $entry->get_id() . '">' . $entry->get_content() . '</div>';
 				?>
 	
@@ -120,6 +128,23 @@ $author->set_id($authorid);
 						</ul>
             		</div>
         		</div>
+        		
+        		<div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Collapsable</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="display: block;">
+              The body of the box
+            </div>
+            <!-- /.box-body -->
+          </div>
    			</div>
 		</div>
   
