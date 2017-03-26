@@ -44,7 +44,7 @@ $user->set_id($current_user['user_id']);
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="/dashboard.php" class="logo">
+    <a href="<?php echo $baseurl ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
