@@ -6,7 +6,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> PRE-ALPHA
     </div>
-    <strong>Powered by <a href="https://github.com/xadz/hoard">Hoard</a>.</strong>
+    <strong>Powered by <a href="https://github.com/xadz/hoard">Hoard</a></strong>
   </footer>
 
   </div>
@@ -50,5 +50,10 @@
 <script src="assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="assets/dist/js/demo.js"></script>
+
+<script src="assets/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script>
+	$(".my-colorpicker1").colorpicker();
+</script>
 </body>
 </html>

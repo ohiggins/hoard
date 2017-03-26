@@ -1,29 +1,29 @@
 <?php
 	
-	/*******************************
-	
-	Edit Existing Entry
-	edit.php
-	
-	********************************/
-	
-	include('parts/header.php');
-	
-	if(!empty($_GET["id"])) {
-		$id = htmlspecialchars($_GET["id"]);
-	} else {
-		$id = false;
-	}
-	
-	$user = new User();
-	$user->set_id($current_user['user_id']); 
-	
-	$entry = new Entry();
-	$entry->set_id($id); 
-	echo $entry->get_name();
-	
-	$snippet = new Snippet();
-	$snippet->set_id($entry->get_parent()); 
+/*******************************
+
+Edit Existing Entry
+edit.php
+
+********************************/
+
+include('parts/header.php');
+
+if(!empty($_GET["id"])) {
+	$id = htmlspecialchars($_GET["id"]);
+} else {
+	$id = false;
+}
+
+$user = new User();
+$user->set_id($current_user['user_id']); 
+
+$entry = new Entry();
+$entry->set_id($id); 
+echo $entry->get_name();
+
+$snippet = new Snippet();
+$snippet->set_id($entry->get_parent()); 
 
 ?>
 

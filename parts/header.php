@@ -125,8 +125,8 @@ $user->set_id($current_user['user_id']);
         <li class="header">MAIN NAVIGATION</li>
         <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="#"><i class="fa fa-users"></i> <span>Team</span></a></li>
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-heart text-red"></i> <span>Favourites</span></a></li>
+        <li class="header">LABELS<div class="pull-right"><a href="add_label.php"><i class="fa fa-plus" aria-hidden="true"></i></a></div></li>
+        <li><a href="favourites.php"><i class="fa fa-heart text-red"></i> <span>Favourites</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
