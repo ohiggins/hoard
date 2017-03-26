@@ -1,6 +1,7 @@
 <?php
 	
 	include('parts/header.php');
+
 	
 	if(!empty($_GET["id"])) {
 		$id = htmlspecialchars($_GET["id"]);
@@ -12,7 +13,6 @@
 	
 	$user = new User();
 	$user->set_id($current_user['user_id']); 
-
 ?>
 
 
@@ -37,15 +37,13 @@
 <?php
 if($id and $snippet->get_title()) {
 
-if($snippet->get_author() == $user->get_id()) {
-
 ?>
 
 <div id="register-prompt">
 <h1>add snippet entry</h1>
 <form action="app/entry_process.php" method="post">
 
-<input name="snippet" type="hidden" value="<?php echo $_GET['id']; ?>" />
+<input name="snippet" type="hidden" value="<?php echo $snippet->get_id(); ?>" />
 <p><label>Entry Title:</label> <input tabindex="1" id="start-here" name="title" type="text" placeholder="test" /></p>
 <p><label>Snippet Entry:</label> <textarea name="entry" type="text"></textarea></p>
 <p><label>Lanauge:</label> <select id="mode" name="language" size="1">
@@ -54,14 +52,8 @@ if($snippet->get_author() == $user->get_id()) {
 </form>
 </div>
 <?php
-} else {
-	echo '
-		<div class="callout callout-danger">
-        <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Permission denied.</h4>
-        <p>You can\'t add an entry to a snippet you don\'t own!</p>
-        </div>';
-	}
-	} 
+}
+	 
 	else {
 	echo '
 		<div class="callout callout-danger">

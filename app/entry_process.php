@@ -1,9 +1,30 @@
 <?php
+	
+/*******************************
+	
+	Process New Entry
+	entry_process.php
+	
+********************************/
 
-include('config.php');
+require_once('login_check.php');
+include('functions.php');
 
-// make a new snippet
+// Initialise snippet object
+$id = trim($_POST['snippet']);
+$snippet = new Snippet();
+$snippet->set_id($id); 
 
+// Initialise current user object
+$user = new User();
+$user->set_id($current_user['user_id']); 
+	
+// Double check the current user owns this snippet
+if($snippet->get_author() != $user->get_id()) {
+	die('Permission denied');	
+}
+
+// Double check the fields have data
 if (!isset($_POST['title']) || trim($_POST['title']) == '') {
 	die('you forgot to put in a title');
 }
@@ -12,6 +33,7 @@ if (!isset($_POST['entry']) || trim($_POST['entry']) == '') {
 	die('you forgot to put in an entry');
 }
 
+// Connect to database and insert entry
 require_once('db.php');
 
 $new_entry_snippet = "'".$mysqli->escape_string(trim($_POST['snippet']))."'";
@@ -24,6 +46,7 @@ if (!$new_entry) {
 	die('error creating new entry: '.$mysqli->error);
 }
 
+// Redirect back to snippet page with success message
 header('Location: ../snippet.php?id=' . trim($_POST['snippet']) . '&entry_success');
 
 ?>
