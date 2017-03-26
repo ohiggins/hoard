@@ -24,7 +24,7 @@ if (!$new_entry) {
 	die('error creating new entry: '.$mysqli->error);
 }
 
-header('Location: ../snippet.php?id=' . $new_entry_snippet . '&snippet_success');
+header('Location: ../snippet.php?id=' . trim($_POST['snippet']) . '&entry_success');
 
 ?>
 

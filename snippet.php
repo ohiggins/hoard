@@ -20,11 +20,9 @@
     <section class="content-header" style="background: red; height: 50px;">
       <h1>
         Dashboard
-        <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-code" aria-hidden="true"></i> <?php echo $snippet->get_title(); ?></a></li>
       </ol>
     </section>
 
@@ -33,6 +31,15 @@
 <div class="stretch-container">
   <div class="row">
 	  <div class="col-lg-12">
+		  
+		<?php if (strpos($_SERVER['REQUEST_URI'], "entry_success") !== false){ ?>
+		<div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-check"></i> Entry Added</h4>
+                Your new entry was created successfully.
+              </div>
+		
+		<?php } ?>
 
 <?php
 if($id and $snippet->get_title()) {
@@ -55,13 +62,14 @@ if($id and $snippet->get_title()) {
 				$id = $entries['entry_id'];
 				$entry = new Entry();
 				$entry->set_id($id); 
+				echo $entry->get_name(); 
 
 		    echo '<div id="editor-' . $entry->get_id() . '">' . $entry->get_content() . '</div>';
 		    ?>
 		    <script>
 			    var editor = ace.edit("editor-" + "<?php echo $entry->get_id(); ?>");
 			    editor.setTheme("ace/theme/twilight");
-			    editor.getSession().setMode("ace/mode/javascript");
+			    editor.getSession().setMode("ace/mode/<?php echo $entry->get_language(); ?>");
 			</script>
 				
 				<?php }
@@ -86,10 +94,8 @@ if($id and $snippet->get_title()) {
             </div>
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Tasks</a></li>
-                <li><a href="#">Completed Projects</a></li>
-                <li><a href="#">Followers</a></li>
+                <li><a href="#">Edit Snippet</a></li>
+                <li><a href="/entry.php?id=<?php echo $snippet->get_id(); ?>">Add Entry</a></li>
               </ul>
             </div>
           </div>

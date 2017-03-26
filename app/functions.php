@@ -112,12 +112,30 @@ class Entry
    		return $id;
 	}
 	
+	function get_name() {
+		include('db.php');
+		$id = $this->id;
+		$entry_name = mysqli_query($mysqli, "SELECT entry_name FROM snippets_entries WHERE entry_id = $id");
+		if ($row_entries = mysqli_fetch_array($entry_name, MYSQLI_ASSOC)) {
+			return htmlentities($row_entries['entry_name']);	
+		}
+	}
+	
 	function get_content() {
 		include('db.php');
 		$id = $this->id;
 		$entry_content = mysqli_query($mysqli, "SELECT entry_content FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($entry_content, MYSQLI_ASSOC)) {
 			return htmlentities($row_entries['entry_content']);	
+		}
+	}
+	
+	function get_language() {
+		include('db.php');
+		$id = $this->id;
+		$entry_language = mysqli_query($mysqli, "SELECT entry_language FROM snippets_entries WHERE entry_id = $id");
+		if ($row_entries = mysqli_fetch_array($entry_language, MYSQLI_ASSOC)) {
+			return htmlentities($row_entries['entry_language']);	
 		}
 	}
 	
