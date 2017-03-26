@@ -90,11 +90,20 @@ class Snippet
 		}
 	}
 	
+	function get_description() {
+		include('db.php');
+		$id = $this->id;
+		$snippet_description = mysqli_query($mysqli, "SELECT snippet_description FROM snippets WHERE snippet_id = $id");
+		if ($snippet_description && $row_snippets = mysqli_fetch_array($snippet_description, MYSQLI_ASSOC)) {
+			return htmlentities($row_snippets['snippet_description']);	
+		}
+	}
+	
 	function get_author() {
 		include('db.php');
 		$id = $this->id;
-		$snippet_date = mysqli_query($mysqli, "SELECT snippet_author FROM snippets WHERE snippet_id = $id");
-		if ($row_snippets = mysqli_fetch_array($snippet_date, MYSQLI_ASSOC)) {
+		$snippet_author = mysqli_query($mysqli, "SELECT snippet_author FROM snippets WHERE snippet_id = $id");
+		if ($row_snippets = mysqli_fetch_array($snippet_author, MYSQLI_ASSOC)) {
 			return htmlentities($row_snippets['snippet_author']);	
 		}
 	}

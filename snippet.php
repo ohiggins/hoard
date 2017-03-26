@@ -55,6 +55,14 @@ $author->set_id($authorid);
 				</div>
 				
 				<?php } ?>
+
+				<?php if (strpos($_SERVER['REQUEST_URI'], "details_success") !== false){ ?>
+				<div class="alert alert-success alert-dismissible">
+				    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				    <h4><i class="icon fa fa-check"></i> Details Updated</h4>
+				    Your snippet was updated successfully.
+				</div>
+				<?php } ?>
 				
 				<?php if (strpos($_SERVER['REQUEST_URI'], "delete_success") !== false){ ?>
 				<div class="alert alert-success alert-dismissible">
@@ -73,7 +81,7 @@ $author->set_id($authorid);
 			<div class="col-lg-8">
 					
 			    <h2><?php echo $snippet->get_title(); ?></h2>
-			    <p>Lorem ipsum dolor sit amet.</p>
+			    <p><?php echo $snippet->get_description(); ?></p>
 			    <hr>
 	
 				<?php
@@ -123,7 +131,7 @@ $author->set_id($authorid);
             		
 					<div class="box-footer no-padding">
 						<ul class="nav nav-stacked">
-							<li><a href="#">Edit Snippet</a></li>
+							<li><a href="/details.php?id=<?php echo $snippet->get_id(); ?>">Edit Snippet</a></li>
 							<li><a href="/entry.php?id=<?php echo $snippet->get_id(); ?>">Add Entry</a></li>
 						</ul>
             		</div>
