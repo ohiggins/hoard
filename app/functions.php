@@ -1,4 +1,11 @@
-<?php	
+<?php
+	
+/*******************************
+	
+	Classes & Functions
+	app/functions.php
+	
+********************************/	
 
 /**
 	User Class
@@ -136,6 +143,15 @@ class Entry
 		$entry_language = mysqli_query($mysqli, "SELECT entry_language FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($entry_language, MYSQLI_ASSOC)) {
 			return htmlentities($row_entries['entry_language']);	
+		}
+	}
+	
+	function get_parent() {
+		include('db.php');
+		$id = $this->id;
+		$snippet_id = mysqli_query($mysqli, "SELECT snippet_id FROM snippets_entries WHERE entry_id = $id");
+		if ($row_entries = mysqli_fetch_array($snippet_id, MYSQLI_ASSOC)) {
+			return htmlentities($row_entries['snippet_id']);	
 		}
 	}
 	

@@ -40,6 +40,15 @@
               </div>
 		
 		<?php } ?>
+		
+				<?php if (strpos($_SERVER['REQUEST_URI'], "edit_success") !== false){ ?>
+		<div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-check"></i> Entry Updated</h4>
+                Your new entry was updated successfully.
+              </div>
+		
+		<?php } ?>
 
 <?php
 if($id and $snippet->get_title()) {
@@ -64,6 +73,7 @@ if($id and $snippet->get_title()) {
 				$entry->set_id($id); 
 				echo $entry->get_name(); 
 
+			echo '<a href="/edit.php?id=' . $entry->get_id() . '">edit</a>';
 		    echo '<div id="editor-' . $entry->get_id() . '">' . $entry->get_content() . '</div>';
 		    ?>
 		    <script>

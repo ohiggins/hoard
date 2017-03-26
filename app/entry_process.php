@@ -3,7 +3,7 @@
 /*******************************
 	
 	Process New Entry
-	entry_process.php
+	app/entry_process.php
 	
 ********************************/
 
