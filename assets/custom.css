@@ -56,3 +56,18 @@
 	height: 50px;
 	background: #fff !important;
 }
+
+.snippet-labels {
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
+
+.snippet-labels span {
+	margin-right: 6px;
+	border-radius: 3px;
+	padding: 4px 8px;
+	color: #fff;
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+	font-weight: bold;
+	font-size: 12px;
+}

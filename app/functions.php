@@ -107,6 +107,14 @@ class Snippet
 			return htmlentities($row_snippets['snippet_author']);	
 		}
 	}
+	
+	function get_labels() {
+		include('db.php');
+		$id = $this->id;
+		$query = mysqli_query($mysqli, "SELECT label_id FROM tagging WHERE snippet_id = $id");
+		$result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+		return $result;
+	}
  }
  
 
@@ -162,9 +170,46 @@ class Entry
 		if ($row_entries = mysqli_fetch_array($snippet_id, MYSQLI_ASSOC)) {
 			return htmlentities($row_entries['snippet_id']);	
 		}
+	}	
+}
+
+
+
+/**
+	Label Class
+**/
+ 
+class Label
+{
+	var $label;
+	
+	function set_id($current_id) { 
+		$this->id = $current_id;  
+ 	}
+ 
+   	function get_id() {
+   		$id = $this->id;
+   		return $id;
 	}
 	
- }
+	function get_name() {
+		include('db.php');
+		$id = $this->id;
+		$label_name = mysqli_query($mysqli, "SELECT label_name FROM labels WHERE label_id = $id");
+		if ($row_labels = mysqli_fetch_array($label_name, MYSQLI_ASSOC)) {
+			return htmlentities($row_labels['label_name']);	
+		}
+	}	
+	
+	function get_hex() {
+		include('db.php');
+		$id = $this->id;
+		$label_hex = mysqli_query($mysqli, "SELECT label_hex FROM labels WHERE label_id = $id");
+		if ($row_labels = mysqli_fetch_array($label_hex, MYSQLI_ASSOC)) {
+			return htmlentities($row_labels['label_hex']);	
+		}
+	}	
+}
 
 
 ?>

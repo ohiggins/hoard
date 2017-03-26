@@ -82,6 +82,16 @@ $author->set_id($authorid);
 					
 			    <h2><?php echo $snippet->get_title(); ?></h2>
 			    <p><?php echo $snippet->get_description(); ?></p>
+			    <div class="snippet-labels">
+				    <?php 
+						foreach($snippet->get_labels() as $labels) { 
+							$label = new Label();
+							$labelid = $labels['label_id'];
+							$label->set_id($labelid);
+							echo '<span style="background-color: ' . $label->get_hex() . '">' . $label->get_name() . '</span>';
+						}
+					?>
+			    </div>
 			    <hr>
 	
 				<?php
