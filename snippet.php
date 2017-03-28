@@ -32,8 +32,6 @@ $author->set_id($authorid);
 	</ol>
 	</section>
 
-	<script src="/assets/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-
 	<div class="stretch-container">
 		<div class="row">
 			<div class="col-lg-12">
