@@ -71,3 +71,9 @@
 	font-weight: bold;
 	font-size: 12px;
 }
+
+.new-entry .ace_editor {
+	height: calc(100vh - 225px);
+	width: 100%;
+	margin-bottom: 0;
+}
