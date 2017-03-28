@@ -209,6 +209,15 @@ class Label
 			return htmlentities($row_labels['label_hex']);	
 		}
 	}	
+	
+	function has_label($snippet_id) {
+		include('db.php');
+		$id = $this->id;
+		$has_label = mysqli_query($mysqli, "SELECT * FROM tagging WHERE label_id = $id AND snippet_id = $snippet_id");
+		if ($row_labels = mysqli_fetch_array($has_label, MYSQLI_ASSOC)) {
+			return true;
+		}
+	}
 }
 
 

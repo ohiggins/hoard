@@ -26,7 +26,7 @@ $author->set_id($authorid);
 <div class="content-wrapper">
 	
 	<section class="content-header" style="background: red; height: 50px;">
-	<h1>Dashboard</h1>
+	<h1>Snippet</h1>
 	<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-code" aria-hidden="true"></i> <?php echo $snippet->get_title(); ?></a></li>
 	</ol>

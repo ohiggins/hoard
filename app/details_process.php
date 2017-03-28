@@ -53,17 +53,11 @@ if (!$new_entry) {
 	die('error deleting labels: '.$mysqli->error);
 }
 
-// Re-assign new labels
-$labels = mysqli_query($mysqli, "SELECT * FROM labels");
 
-if ($labels AND $labels->num_rows !== 0) {
-	while ($row_labels = mysqli_fetch_array($labels, MYSQLI_ASSOC)) {
-		$label_id = $row_labels['label_id'];
-		if(isset($_POST['label-' . $row_labels['label_id']])) {
-			$label = $mysqli->query("INSERT INTO tagging (snippet_id, label_id) VALUES ($snippet_id, $label_id)");
-		}
-	} 	
-} 
+// Re-assign new labels
+foreach ($_POST['labelpicker'] as $labeloption) {
+	$label = $mysqli->query("INSERT INTO tagging (snippet_id, label_id) VALUES ($snippet_id, $labeloption)");
+}
  
 // Redirect back to snippet page with success message
 header('Location: ../snippet.php?id=' . $snippet->get_id() . '&details_success');

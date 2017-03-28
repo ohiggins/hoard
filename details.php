@@ -53,25 +53,40 @@ if($snippet->get_author() == $user->get_id()) {
 <p><label>Snippet Title:</label> <input tabindex="1" name="title" value="<?php echo htmlspecialchars($snippet->get_title()); ?>" type="text" placeholder="test" /></p>
 <p><label>Snippet Description:</label> <textarea name="description" type="text"><?php echo htmlspecialchars($snippet->get_description()); ?></textarea></p>
 <p><label>Snippet Visibility:</label>
-	<select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="visibility" tabindex="-1" aria-hidden="true">
+	<select class="form-content" style="width: 100%;" name="visibility" tabindex="-1" aria-hidden="true">
                   <option value="0" selected="selected">Only Me</option>
                   <option value="1">Team</option>
                   <option value="2">Public</option>
                 </select>
                 </p>
                 
+					<script type="text/javascript">
+						$(document).ready(function() {
+							$(".labelpicker").select2({
+								placeholder: "Select a label..."
+							});
+						});
+					</script>
+                
              <p><label>Snippet Labels:</label>
-                	    <?php
-	                	    include('app/db.php');
+	             <?php include('app/db.php');
 							$labels = mysqli_query($mysqli, "SELECT * FROM labels");
-							if ($labels AND $labels->num_rows !== 0) {
+							if ($labels AND $labels->num_rows !== 0) { ?>
+	             <select name="labelpicker[]" size="1" id="labels" class="labelpicker form-control" multiple>
+                	    <?php
 							while ($row_labels = mysqli_fetch_array($labels, MYSQLI_ASSOC)) {
-								echo "<input type='checkbox' name='label-" . $row_labels['label_id'] . "'>" . $row_labels['label_name'] . $row_labels['label_hex'];
-							} } else {
+								$labelid = $row_labels['label_id'];
+								$label = new Label();
+								$label->set_id($labelid); 
+								if ($label->has_label($snippet->get_id()) == true) { $active = 'selected="selected"'; } else { $active = ''; }
+								echo "<option " . $active . " title='label-" . $row_labels['label_id'] . "' value='" . $row_labels['label_id'] . "'>" . $row_labels['label_name'] . "</option>";
+							} 
+							} else {
 								echo 'Please add a label!';
 							}
 							
 						?>
+	             </select>
 
 <p><input type="submit" value="add snippet" /></p>
 </form>

@@ -2,8 +2,8 @@
 	
 /*******************************
 	
-	Snippet Single View
-	snippet.php
+	Add Snippet Entry
+	entry.php
 	
 ********************************/
 
