@@ -50,9 +50,9 @@
 	
 </div>
 <div class="col-md-4">
-	<div class="box box-info">
+	<div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Horizontal Form</h3>
+              <h3 class="box-title">Entry Details</h3>
             </div>
             
 
@@ -60,11 +60,15 @@
 	            
 
 <input name="snippet" type="hidden" value="<?php echo $_GET['id']; ?>" />
-<p><label>Entry Title:</label> <input tabindex="1" id="start-here" name="title" type="text" placeholder="test" /></p>
-<p><label>Lanauge:</label> 
-	
-<select name="language" size="1">
-<option hidden="" disabled="disabled" selected="selected" value="">Please Choose...</option>
+<input tabindex="1" id="start-here" name="title" type="text" placeholder="Entry Title" class="form-control input-lg" /></p>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".langpicker").select2();
+});
+</script>
+<select name="language" size="1" id="mode" class="langpicker form-control">
+<option hidden="" disabled="disabled" selected="selected" value="">Please choose a language...</option>
 <option value="abap">ABAP</option>
 <option value="abc">ABC</option>
 <option value="actionscript">ActionScript</option>
@@ -210,10 +214,15 @@
               
             <div class="box-footer">
             <button href="#" class="btn btn-default">Cancel</button>
-            <input type="submit" value="Add Entry" class="btn btn-info pull-right"/>
+            <input type="submit" value="Add Entry" class="btn btn-warning pull-right"/>
             </div>
         </div>
 
+<div class="alert alert-muted alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-info"></i> Tip!</h4>
+                Select your language first to enable syntax highlighting in the editor.
+              </div>
 </div>
 </form>
 <?php
@@ -255,9 +264,18 @@
             // copy back to textarea on form submit...
             textarea.closest('form').submit(function () {
                 textarea.val(editor.getSession().getValue());
-            })
-        });
+            });
+            
+            $('#mode').on('change', function(){
+				var newMode = $("#mode").val();
+				console.log($("#mode").val());
+				editor.session.setMode("ace/mode/" + newMode);
+				v: Date.now();
+			});          
+        });  
     });
+    
+
 </script>
 	
 <?php include('parts/footer.php'); ?>
