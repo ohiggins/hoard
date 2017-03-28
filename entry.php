@@ -234,7 +234,6 @@ $user->set_id($current_user['user_id']);
 	</div>
 </div>
 
-<script src="/assets/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
 	$(function () {
 		$('textarea[data-editor]').each(function () {

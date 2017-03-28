@@ -51,6 +51,11 @@
 	margin-right: 3px;
 }
 
+.entry-header .lang {
+	opacity: 0.8;
+	margin-right: 5px;
+}
+
 .entry-header a {
 	color: #f39c12;
 	font-weight: bold;

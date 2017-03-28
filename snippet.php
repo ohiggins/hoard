@@ -104,7 +104,7 @@ $author->set_id($authorid);
 				?>
 				
 				<div class="entry-header">
-					<i class="fa fa-code" aria-hidden="true"></i> <?php echo $entry->get_name(); ?>
+					<i class="fa fa-code" aria-hidden="true"></i><span class="lang"><?php echo $entry->pretty_lang($entry->get_language()); ?></span> <?php echo $entry->get_name(); ?>
 					<div class="pull-right"><a href="/edit.php?id=<?php echo $entry->get_id() ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT</a></div>
 				</div>
 				

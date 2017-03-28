@@ -31,6 +31,7 @@ $user->set_id($current_user['user_id']);
   <link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="assets/dist/css/skins/skin-yellow.min.css">
   <link rel="stylesheet" href="assets/custom.css">
+  <script src="/assets/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <!-- jQuery 2.2.3 -->
 <script src="assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
