@@ -52,6 +52,26 @@ class User
 			echo 'https://www.gravatar.com/avatar/' . md5($email) . '?d=mm"';	
 		}
 	}
+	
+	function get_title() {
+		include('db.php');
+		$userid = $this->id;
+		$name = mysqli_query($mysqli, "SELECT title FROM users WHERE user_id = $userid");
+		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
+			$title = htmlentities($row_users['title']);
+			return $title;	
+		}
+	}
+	
+	function get_timezone() {
+		include('db.php');
+		$userid = $this->id;
+		$name = mysqli_query($mysqli, "SELECT timezone FROM users WHERE user_id = $userid");
+		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
+			$timezone = htmlentities($row_users['timezone']);
+			return $timezone;	
+		}
+	}
  }
  
  
