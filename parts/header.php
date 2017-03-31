@@ -92,6 +92,9 @@ $user->set_id($current_user['user_id']);
           <li>
             <a href="#"><i class="fa fa-gears"></i></a>
           </li>
+          <li>
+            <a href="#" data-toggle="modal" data-target="#about"><i class="fa fa-info"></i></a>
+          </li>
         </ul>
       </div>
     </nav>
