@@ -30,7 +30,7 @@ class User
 		$userid = $this->id;
 		$name = mysqli_query($mysqli, "SELECT name FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
-			echo htmlentities($row_users['name']);	
+			return htmlentities($row_users['name']);	
 		}
 	}
 	
@@ -39,7 +39,7 @@ class User
 		$userid = $this->id;
 		$name = mysqli_query($mysqli, "SELECT email FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
-			echo htmlentities($row_users['email']);	
+			return htmlentities($row_users['email']);	
 		}
 	}
 
@@ -49,7 +49,7 @@ class User
 		$name = mysqli_query($mysqli, "SELECT email FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
 			$email = htmlentities($row_users['email']);
-			echo 'https://www.gravatar.com/avatar/' . md5($email) . '?d=mm"';	
+			return 'https://www.gravatar.com/avatar/' . md5($email) . '?d=mm"';	
 		}
 	}
 	

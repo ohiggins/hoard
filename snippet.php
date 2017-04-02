@@ -133,7 +133,7 @@ $author->set_id($authorid);
 						<div class="widget-user-image">
 							<img class="img-circle" src="<?php echo $author->get_gravatar(); ?>g" alt="User Avatar">
             			</div>
-						<h3 class="widget-user-username"><?php $author->get_name(); ?></h3>
+						<h3 class="widget-user-username"><?php echo $author->get_name(); ?></h3>
 						<h5 class="widget-user-desc">Lead Developer</h5>
             		</div>
             		

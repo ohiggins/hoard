@@ -25,7 +25,7 @@ Hoard features a number of useful features to make your development easier.
 - **User management and global access for admins**
 - **Lightweight PHP & MySQL you can host yourself**
 
-Check out our [**roadmap**](https://github.com/xadz/hoard/projects/2) to see what else is on it's way!
+See our [**roadmap**](https://github.com/xadz/hoard/projects/2) to see what else is on it's way or open an [**issue**](https://github.com/xadz/hoard/issues) for a feature request!
 
   <br />
 
