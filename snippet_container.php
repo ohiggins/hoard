@@ -60,40 +60,6 @@ $author->set_id($authorid);
 <div class="stretch-container">
 		<div class="row">
 			<div class="col-lg-12">
-			  
-				<?php if (strpos($_SERVER['REQUEST_URI'], "entry_success") !== false){ ?>
-				<div class="alert alert-success alert-dismissible">
-				    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				    <h4><i class="icon fa fa-check"></i> Entry Added</h4>
-				    Your new entry was created successfully.
-				</div>
-				
-				<?php } ?>
-				
-				<?php if (strpos($_SERVER['REQUEST_URI'], "edit_success") !== false){ ?>
-				<div class="alert alert-success alert-dismissible">
-				    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				    <h4><i class="icon fa fa-check"></i> Entry Updated</h4>
-				    Your entry was updated successfully.
-				</div>
-				
-				<?php } ?>
-
-				<?php if (strpos($_SERVER['REQUEST_URI'], "details_success") !== false){ ?>
-				<div class="alert alert-success alert-dismissible">
-				    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				    <h4><i class="icon fa fa-check"></i> Details Updated</h4>
-				    Your snippet was updated successfully.
-				</div>
-				<?php } ?>
-				
-				<?php if (strpos($_SERVER['REQUEST_URI'], "delete_success") !== false){ ?>
-				<div class="alert alert-success alert-dismissible">
-				    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				    <h4><i class="icon fa fa-check"></i> Entry Deleted</h4>
-				    Your entry was deleted successfully.
-				</div>
-				<?php } ?>
 
 	<?php
 		if($id and $snippet->get_title()) {
