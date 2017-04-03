@@ -18,6 +18,9 @@ if(!empty($_GET["id"])) {
 $author = new User();
 $author->set_id($id);
 
+$authorid = $mysqli->real_escape_string($id);
+$snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author = $authorid");
+
 ?>
 
 <div class="content-wrapper">
@@ -77,10 +80,14 @@ $author->set_id($id);
 
 			<div class="col-lg-8">
 					
-			    <h2><?php echo $author->get_name(); ?></h2>
-			    <p><?php echo $author->get_name(); ?></p>
-			    <hr>
-	
+				    <?php
+		    $i = 0;
+			while ($row_users = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
+			    //output a row here
+			    echo "<li " . ($i == 0 ? "class='active'" : "") . "><a href='#snippet-".$row_users['snippet_id']."' data-toggle='tab'>".(htmlentities($row_users['snippet_title']))."<br />date</a></li>";
+			    $i = $i + 1;
+			}
+		?>	
 	
 			</div>
 

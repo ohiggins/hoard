@@ -37,7 +37,7 @@ $user->set_id($current_user['user_id']);
 		    $i = 0;
 			while ($row_users = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
 			    //output a row here
-			    echo "<li " . ($i == 0 ? "class='active'" : "") . "><a href='#snippet-".$row_users['snippet_id']."' data-toggle='tab'>".(htmlentities($row_users['snippet_title']))."<br />date</a></li>";
+			    echo "<li " . ($i == 0 ? "class='active'" : "") . "><a href='#snippet-" . $row_users['snippet_id'] . "' onclick='getSummary(" . $row_users['snippet_id'] .")'>" . (htmlentities($row_users['snippet_title'])) . "<br />date</a></li>";
 			    $i = $i + 1;
 			}
 		?>
@@ -47,16 +47,30 @@ $user->set_id($current_user['user_id']);
 
 <div class="col-xs-9">
     <div class="tab-content">
-       <?php
-	       	mysqli_data_seek( $snippets, 0 );
-	       	$i = 0;
-			while ($row_users = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
-			    echo "<div class='tab-pane ". ($i == 0 ? "active" : "") . "' id='snippet-".$row_users['snippet_id']."'><a href='/snippet.php?id=".$row_users['snippet_id']."'>".(htmlentities($row_users['snippet_title']))."</a></div>";
-			    $i = $i + 1;
-			}
-		?>
+		<div class="test">LOADING</div>
     </div>
 </div>
+
+<script>
+	
+
+function getSummary(id)
+{
+$('.test').html('Loading...');
+   $.ajax({
+
+     type: "GET",
+     url: 'snippet_container.php',
+     data: "id=" + id, // appears as $_GET['id'] @ your backend side
+     success: function(data) {
+           // data is ur summary
+          $('.test').html(data);
+     }
+
+   });
+
+}
+</script>
 
 
 <?php include('parts/footer.php'); ?>
