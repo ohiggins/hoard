@@ -49,7 +49,7 @@ class User
 		$name = mysqli_query($mysqli, "SELECT email FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
 			$email = htmlentities($row_users['email']);
-			return 'https://www.gravatar.com/avatar/' . md5($email) . '?d=mm"';	
+			return 'https://www.gravatar.com/avatar/' . md5($email) . '?d=mm';	
 		}
 	}
 	

@@ -35,8 +35,27 @@ $user->set_id($current_user['user_id']);
 			while ($row_snippets = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
 				$snippet = new Snippet();
 				$snippet->set_id($row_snippets['snippet_id']);
+				$author2 = new User();
+				$author2->set_id($snippet->get_author()); 
 		?>
-				<li  <?php if ($i == 0) { echo 'class="active"'; } ?> onclick='getSummary(<?php echo $snippet->get_id(); ?>)'><a href="#snippet-<?php echo $snippet->get_id(); ?>" data-toggle="tab"><?php echo $snippet->get_title(); ?> <br /> Posted <?php echo $snippet->get_date(); ?> by <?php echo $snippet->get_author_name(); ?> </a></li>
+				<li  <?php if ($i == 0) { echo 'class="active"'; } ?> onclick='getSummary(<?php echo $snippet->get_id(); ?>)'>
+					<a href="#snippet-<?php echo $snippet->get_id(); ?>" data-toggle="tab">
+						<img src="<?php echo $author2->get_gravatar(); ?>" class="avatar">
+						<span class="title"><?php echo $snippet->get_title(); ?></span><br /> 
+						<span class="meta">Posted <?php echo $snippet->get_date(); ?> by <?php echo $author2->get_name(); ?></span>
+									    <div class="chooser-labels">
+				    <?php 
+						foreach($snippet->get_labels() as $labels) { 
+							$label = new Label();
+							$labelid = $labels['label_id'];
+							$label->set_id($labelid);
+							echo '<span style="background-color: ' . $label->get_hex() . '">' . $label->get_name() . '</span>';
+						}
+					?>
+			    </div>
+						 
+					</a>
+				</li>
 		<?
 			    if ($i == 0) { $startingid = $snippet->get_id(); }
 			    $i = $i + 1;
