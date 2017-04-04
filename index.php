@@ -18,29 +18,28 @@
 
 
 <?php
-
 	
 include('app/db.php');
-$snippets = mysqli_query($mysqli, "SELECT * FROM snippets");
-
+$snippets = mysqli_query($mysqli, "SELECT * FROM snippets LIMIT 20 OFFSET 0");
 $user = new User();
 $user->set_id($current_user['user_id']); 
-
-
 ?>
 
 
 <div class="col-xs-3" style="padding: 0;">
-	<div class="chooser" style="height: calc(100vh - 135px); overflow-y: scroll; overflow-x: hidden; position: relative;">
-    <ul class="nav nav-tabs tabs-left">
+	<div class="chooser" style="height: calc(100vh - 135px); overflow-x: hidden;">
+    <ul class="nav nav-tabs tabs-left" style="min-height: 100%;">
+	    <div class="chooser-label"><strong>MY SNIPPETS</strong> / ALL SNIPPETS <span class="pull-right">MOST RECENT <i class="fa fa-caret-down" aria-hidden="true"></i></span></div>
 	    <?php
 		    $i = 0;
-			while ($row_users = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
-			    //output a row here
-			    echo "<li " . ($i == 0 ? "class='active'" : "") . "><a href='#snippet-" . $row_users['snippet_id'] . "' onclick='getSummary(" . $row_users['snippet_id'] .")'>" . (htmlentities($row_users['snippet_title'])) . "<br />date</a></li>";
-			    if($i == 0) { $startingid = $row_users['snippet_id']; } 
+			while ($row_snippets = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
+				$snippet = new Snippet();
+				$snippet->set_id($row_snippets['snippet_id']);
+		?>
+				<li  <?php if ($i == 0) { echo 'class="active"'; } ?> onclick='getSummary(<?php echo $snippet->get_id(); ?>)'><a href="#snippet-<?php echo $snippet->get_id(); ?>" data-toggle="tab"><?php echo $snippet->get_title(); ?> <br /> Posted <?php echo $snippet->get_date(); ?> by <?php echo $snippet->get_author_name(); ?> </a></li>
+		<?
+			    if ($i == 0) { $startingid = $snippet->get_id(); }
 			    $i = $i + 1;
-			    
 			}
 		?>
     </ul>
@@ -49,17 +48,15 @@ $user->set_id($current_user['user_id']);
 
 <div class="col-xs-9">
     <div class="tab-content scrolly">
-		<div class="test">LOADING</div>
+		<div class="test"></div>
     </div>
 </div>
 
+
 <script>
-	
-	
 	
 $( document ).ready(function() {
    $.ajax({
-
      type: "GET",
      url: 'snippet_container.php',
      data: "id=" + <?php echo $startingid; ?>, // appears as $_GET['id'] @ your backend side
@@ -67,19 +64,16 @@ $( document ).ready(function() {
            // data is ur summary
           $('.test').html(data);
      }
-
    });
    
    $('.chooser').perfectScrollbar({ wheelPropagation: true, });
    $('.scrolly').perfectScrollbar({ wheelPropagation: true, });
    
   });
-
 function getSummary(id)
 {
 $('.test').html('Loading...');
    $.ajax({
-
      type: "GET",
      url: 'snippet_container.php',
      data: "id=" + id, // appears as $_GET['id'] @ your backend side
@@ -87,10 +81,10 @@ $('.test').html('Loading...');
            // data is ur summary
           $('.test').html(data);
      }
-
    });
-
 }
+
+
 </script>
 
 

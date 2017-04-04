@@ -46,8 +46,6 @@
 <script src="/vendor/plugins/select2/select2.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/assets/js/demo.js"></script>
 
 <script src="/vendor/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script>

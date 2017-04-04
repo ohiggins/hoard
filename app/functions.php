@@ -128,6 +128,19 @@ class Snippet
 		}
 	}
 	
+	function get_author_name() {
+		include('db.php');
+		$id = $this->id;
+		$snippet_author = mysqli_query($mysqli, "SELECT snippet_author FROM snippets WHERE snippet_id = $id");
+		if ($row_snippets = mysqli_fetch_array($snippet_author, MYSQLI_ASSOC)) {
+			$authorid = htmlentities($row_snippets['snippet_author']);	
+		}
+		$snippet_author_name = mysqli_query($mysqli, "SELECT name FROM users WHERE user_id = $authorid");
+		if ($row_snippets = mysqli_fetch_array($snippet_author_name, MYSQLI_ASSOC)) {
+			return htmlentities($row_snippets['name']);	
+		}
+	}
+	
 	function get_labels() {
 		include('db.php');
 		$id = $this->id;

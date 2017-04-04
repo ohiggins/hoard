@@ -147,3 +147,19 @@
 	height: calc(100vh - 135px);
 	position: relative;
 }
+
+.chooser-label {
+	background: #f7f7f7;
+	padding: 6px 25px;
+	font-size: 11px;
+	border-bottom: solid 1px #ddd;
+	margin-bottom: -1px;
+	margin-top: -2px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	border-bottom: solid 1px #ddd;
+	border-top: solid 1px #ddd;
+	border-right: solid 1px #ddd;
+	border-radius: 0px;
+}

@@ -17,6 +17,9 @@ https://github.com/select2/select2/blob/master/LICENSE.md
 #### jQuery (MIT)
 https://github.com/jquery/jquery/blob/master/LICENSE.txt
 
+#### Perfect Scrollbar (MIT)
+https://github.com/noraesae/perfect-scrollbar/blob/master/LICENSE
+
 #### FontAwesome (SIL OFL 1.1)
 https://github.com/FortAwesome/Font-Awesome
 
