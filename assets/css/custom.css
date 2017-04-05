@@ -216,3 +216,14 @@ border-color: #ddd !important;
 	font-size: 10px;
 }
 
+
+.test .overlay>.fa {
+    position: absolute;
+    opacity: 0.4;
+    top: 50%;
+    left: 50%;
+    margin-left: -16px;
+    margin-top: -16px;
+    color: #000;
+    font-size: 32px;
+}

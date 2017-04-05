@@ -6,11 +6,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="background: red; height: 50px;">
       <h1>
-        Dashboard
+        Search Results
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-search"></i> Search</a></li>
+        <li class="active"><?php echo $q; ?></li>
       </ol>
     </section>
 
@@ -18,31 +18,52 @@
 
 <?php
 	
+	
+if(!empty($_GET["q"])) {
+	$q = htmlspecialchars($_GET["q"]) . ' ';
+} else {
+	$q = false;
+}
+	
 include('app/db.php');
 $user = new User();
 $user->set_id($current_user['user_id']); 
 $userid = $user->get_id();
-$snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author = $userid OR snippet_visibility != 0 LIMIT 20 OFFSET 0");
+
+$search = new Search();
+$search->set_query($q);
+
+
+include('app/search_process.php');
+
 ?>
 
 
 <div class="col-xs-3" style="padding: 0;">
 	<div class="chooser" style="height: calc(100vh - 135px); overflow-x: hidden;">
     <ul class="nav nav-tabs tabs-left" style="min-height: 100%;">
-	    <div class="chooser-label"><strong>MY SNIPPETS</strong> / ALL SNIPPETS <span class="pull-right">MOST RECENT <i class="fa fa-caret-down" aria-hidden="true"></i></span></div>
+	    <div class="chooser-label">
+		    <strong>XX</strong> 
+		    RESULTS FOR <strong><?php echo $search_contents; ?></strong>
+		    <?php if($search->search_label()) { ?>FILED UNDER <strong><?php echo $search->search_label(); ?></strong> <?php } ?>
+		    <?php if($search->search_author()) { ?>POSTED BY <strong><?php echo $search->search_author(); ?></strong> <?php } ?>
+		    <?php if($search->search_order()) { ?>ORDERED BY <strong><?php echo $search->search_order(); ?></strong> <?php } ?>
+		    <?php if($search->search_favourite()) { ?>MARKED AS <strong>FAVOURITES</strong> <?php } ?>
+		</div>
 	    <?php
+		    
 		    $i = 0;
 			while ($row_snippets = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
 				$snippet = new Snippet();
 				$snippet->set_id($row_snippets['snippet_id']);
-				$author2 = new User();
-				$author2->set_id($snippet->get_author()); 
+				$author = new User();
+				$author->set_id($snippet->get_author()); 
 		?>
 				<li  <?php if ($i == 0) { echo 'class="active"'; } ?> onclick='getSummary(<?php echo $snippet->get_id(); ?>)'>
 					<a href="#snippet-<?php echo $snippet->get_id(); ?>" data-toggle="tab">
-						<img src="<?php echo $author2->get_gravatar(); ?>" class="avatar">
+						<img src="<?php echo $author->get_gravatar(); ?>" class="avatar">
 						<span class="title"><?php echo $snippet->get_title(); ?></span><br /> 
-						<span class="meta">Posted <?php echo $snippet->get_date(); ?> by <?php echo $author2->get_name(); ?></span>
+						<span class="meta">Posted <?php echo $snippet->get_date(); ?> by <?php echo $author->get_name(); ?></span>
 									    <div class="chooser-labels">
 				    <?php 
 						foreach($snippet->get_labels() as $labels) { 
@@ -67,6 +88,7 @@ $snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author =
 
 <div class="col-xs-9">
     <div class="tab-content scrolly">
+	    <?php var_dump($snippets); ?>
 		<div class="test"></div>
     </div>
 </div>

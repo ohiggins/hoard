@@ -7,7 +7,7 @@ require_once('app/login_check.php');
 include('app/config.php'); 
 include('app/functions.php'); 
 include('app/db.php');
-$snippets = mysqli_query($mysqli, "SELECT * FROM snippets");
+
 
 $user = new User();
 $user->set_id($current_user['user_id']); 

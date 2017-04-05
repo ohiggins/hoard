@@ -43,7 +43,7 @@ $snippet->set_id($id);
 <div class="stretch-container">
 <?php
 if($id and $snippet->get_title()) {
-if($snippet->get_author() == $user->get_id()) {
+if($snippet->get_author() == $user->get_id() OR $user->is_admin()) {
 ?>
 
 <div id="register-prompt">
@@ -105,8 +105,8 @@ if($snippet->get_author() == $user->get_id()) {
 <p><input type="submit" value="add snippet" /></p>
 </form>
 
-<form action="app/delete_entry_process.php" method="post">
-	<input name="entryid" type="hidden" value="<?php echo $_GET['id']; ?>" />
+<form action="app/delete_snippet_process.php" method="post">
+	<input name="snippet_id" type="hidden" value="<?php echo $_GET['id']; ?>" />
 	<input type="submit" value="delete snippet!!!!!!!" /></p>
 </form>
 

@@ -28,8 +28,8 @@ class User
 	function get_name() {
 		include('db.php');
 		$userid = $this->id;
-		$name = mysqli_query($mysqli, "SELECT name FROM users WHERE user_id = $userid");
-		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
+		$query = mysqli_query($mysqli, "SELECT name FROM users WHERE user_id = $userid");
+		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 			return htmlentities($row_users['name']);	
 		}
 	}
@@ -37,8 +37,8 @@ class User
 	function get_email() {
 		include('db.php');
 		$userid = $this->id;
-		$name = mysqli_query($mysqli, "SELECT email FROM users WHERE user_id = $userid");
-		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
+		$query = mysqli_query($mysqli, "SELECT email FROM users WHERE user_id = $userid");
+		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 			return htmlentities($row_users['email']);	
 		}
 	}
@@ -46,8 +46,8 @@ class User
 	function get_gravatar() {
 		include('db.php');
 		$userid = $this->id;
-		$name = mysqli_query($mysqli, "SELECT email FROM users WHERE user_id = $userid");
-		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
+		$query = mysqli_query($mysqli, "SELECT email FROM users WHERE user_id = $userid");
+		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 			$email = htmlentities($row_users['email']);
 			return 'https://www.gravatar.com/avatar/' . md5($email) . '?d=mm';	
 		}
@@ -56,8 +56,8 @@ class User
 	function get_title() {
 		include('db.php');
 		$userid = $this->id;
-		$name = mysqli_query($mysqli, "SELECT title FROM users WHERE user_id = $userid");
-		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
+		$query = mysqli_query($mysqli, "SELECT title FROM users WHERE user_id = $userid");
+		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 			$title = htmlentities($row_users['title']);
 			return $title;	
 		}
@@ -66,10 +66,34 @@ class User
 	function get_timezone() {
 		include('db.php');
 		$userid = $this->id;
-		$name = mysqli_query($mysqli, "SELECT timezone FROM users WHERE user_id = $userid");
-		if ($row_users = mysqli_fetch_array($name, MYSQLI_ASSOC)) {
+		$query = mysqli_query($mysqli, "SELECT timezone FROM users WHERE user_id = $userid");
+		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 			$timezone = htmlentities($row_users['timezone']);
 			return $timezone;	
+		}
+	}
+	
+	function get_permissions() {
+		include('db.php');
+		$userid = $this->id;
+		$query = mysqli_query($mysqli, "SELECT permissions FROM users WHERE user_id = $userid");
+		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+			$permissions = htmlentities($row_users['permissions']);
+			return $permissions;	
+		}
+	}
+	
+	function is_admin() {
+		include('db.php');
+		$userid = $this->id;
+		$query = mysqli_query($mysqli, "SELECT permissions FROM users WHERE user_id = $userid");
+		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+			$permissions = htmlentities($row_users['permissions']);
+			if ($permissions = 1) {
+				return true;
+			}	else {
+				return false;
+			}
 		}
 	}
  }
@@ -258,6 +282,82 @@ class Label
 			return true;
 		}
 	}
+}
+
+
+
+/**
+	Search Class
+**/
+
+
+function getBetween($content,$start,$end){
+    $r = explode($start, $content);
+    if (isset($r[1])){
+        $r = explode($end, $r[1]);
+        return $r[0];
+    }
+    return '';
+}
+ 
+class Search {
+	var $search;
+	
+	function set_query($query) {
+		$this->query = $query;
+	}
+	
+	function search_label() {
+		$query = $this->query;
+		$search_label = getBetween($query,"#"," ");
+		if($search_label) {
+			return $search_label;
+		} else {
+			return false;
+		}
+	}
+	
+	function search_author() {
+		$query = $this->query;
+		$search_label = getBetween($query,"@"," ");
+		if($search_label) {
+			return $search_label;
+		} else {
+			return false;
+		}
+	}
+	
+	function search_order() {
+		$query = $this->query;
+		$search_label = getBetween($query,"^"," ");
+		if($search_label) {
+			return $search_label;
+		} else {
+			return false;
+		}
+	}
+	
+	function search_favourite() {
+		$query = $this->query;
+		if(strpos($query, "&lt;3") !== false) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+		
+	function query_label() {
+		include('db.php');
+		$query = $this->query;
+		$search_label = getBetween($query,"#"," ");
+		if($search_label) {
+			$label = mysqli_query($mysqli, "SELECT * FROM labels WHERE label_name LIKE = $search_label");
+			return htmlentities($label['label_id']);	
+		} else {
+			return '*';
+		}
+	}
+
 }
 
 

@@ -138,7 +138,27 @@ $author->set_id($authorid);
             </div>
             <!-- /.box-body -->
           </div>
-   			</div>
+   			
+			
+			<div class="box box-danger collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Admin Tools</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-footer no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">Edit Snippet</a></li>
+              </ul>
+            </div>
+            <!-- /.footer -->
+          </div>
+			
+			</div>
 		</div>
   
 		<?php 
