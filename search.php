@@ -43,7 +43,7 @@ include('app/search_process.php');
 	<div class="chooser" style="height: calc(100vh - 135px); overflow-x: hidden;">
     <ul class="nav nav-tabs tabs-left" style="min-height: 100%;">
 	    <div class="chooser-label">
-		    <strong>XX</strong> 
+		    <strong><?php echo mysqli_num_rows ($snippets) ?></strong> 
 		    RESULTS FOR <strong><?php echo $search_contents; ?></strong>
 		    <?php if($search->search_label()) { ?>FILED UNDER <strong><?php echo $search->search_label(); ?></strong> <?php } ?>
 		    <?php if($search->search_author()) { ?>POSTED BY <strong><?php echo $search->search_author(); ?></strong> <?php } ?>

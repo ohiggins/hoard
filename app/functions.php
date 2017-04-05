@@ -311,7 +311,7 @@ class Search {
 		$query = $this->query;
 		$search_label = getBetween($query,"#"," ");
 		if($search_label) {
-			return $search_label;
+			return $mysqli->escape_string($search_label);
 		} else {
 			return false;
 		}
@@ -321,7 +321,7 @@ class Search {
 		$query = $this->query;
 		$search_label = getBetween($query,"@"," ");
 		if($search_label) {
-			return $search_label;
+			return $mysqli->escape_string($search_label);
 		} else {
 			return false;
 		}
@@ -331,7 +331,7 @@ class Search {
 		$query = $this->query;
 		$search_label = getBetween($query,"^"," ");
 		if($search_label) {
-			return $search_label;
+			return $mysqli->escape_string($search_label);
 		} else {
 			return false;
 		}
@@ -352,7 +352,7 @@ class Search {
 		$search_label = getBetween($query,"#"," ");
 		if($search_label) {
 			$label = mysqli_query($mysqli, "SELECT * FROM labels WHERE label_name LIKE = $search_label");
-			return htmlentities($label['label_id']);	
+			return $mysqli->escape_string(htmlentities($label['label_id']));	
 		} else {
 			return '*';
 		}

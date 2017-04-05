@@ -13,11 +13,11 @@ $search_label = $search->search_label();
 $search_author = $search->search_author();
 $search_order = $search->search_order();
 
-$search_contents = trim(str_replace(
+$search_contents = $mysqli->escape_string(trim(str_replace(
     array($search_label, $search_author, $search_order, '#', '^', '@', '+', '&lt;3'),
     array('','','','','','',''), 
     $q
-));
+)));
 $contents_search = "SELECT * FROM snippets WHERE snippet_title LIKE '%$search_contents%'";
 
 // Grab label from search, work out what ID that label is, fish those snippet ID's out of tagging and write our query
