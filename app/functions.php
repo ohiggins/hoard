@@ -308,6 +308,7 @@ class Search {
 	}
 	
 	function search_label() {
+		include('db.php');
 		$query = $this->query;
 		$search_label = getBetween($query,"#"," ");
 		if($search_label) {
@@ -318,6 +319,7 @@ class Search {
 	}
 	
 	function search_author() {
+		include('db.php');
 		$query = $this->query;
 		$search_label = getBetween($query,"@"," ");
 		if($search_label) {
@@ -328,6 +330,7 @@ class Search {
 	}
 	
 	function search_order() {
+		include('db.php');
 		$query = $this->query;
 		$search_label = getBetween($query,"^"," ");
 		if($search_label) {

@@ -227,3 +227,15 @@ border-color: #ddd !important;
     color: #000;
     font-size: 32px;
 }
+
+.noresults {
+	width: 100%;
+	text-align: center;
+	margin: 100px auto;
+		opacity: 0.1;
+}
+
+.noresults img {
+	width: 75px;
+	margin: auto;
+}
