@@ -54,17 +54,20 @@
 
 <script>
 	$(document).ready(function () {    
-    //Get CurrentUrl variable by combining origin with pathname, this ensures that any url appendings (e.g. ?RecordId=100) are removed from the URL
     var CurrentUrl = $(location).attr('href');
-    //Check which menu item is 'active' and adjust apply 'active' class so the item gets highlighted in the menu
-    //Loop over each <a> element of the NavMenu container
     $('.sidebar-menu li a').each(function(Key,Value)
         {
-            //Check if the current url
+	        console.log(CurrentUrl);
+	        
             if(CurrentUrl.includes(Value['href']))
             {
 	            console.log('true');
-                //We have a match, add the 'active' class to the parent item (li element).
+                $(Value).parent().addClass('active');
+            }
+            
+            if((Value['href'] == '<?php echo $baseurl; ?>/index.php') && (CurrentUrl === '<?php echo $baseurl; ?>/'))
+            {
+	            console.log('true');
                 $(Value).parent().addClass('active');
             }
         });

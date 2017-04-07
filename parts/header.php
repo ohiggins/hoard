@@ -119,8 +119,8 @@ $user->set_id($current_user['user_id']);
       <ul class="sidebar-menu">
 	    <li class="button"><a href="<?php echo $baseurl ?>/add.php" class="btn-sm btn-block btn-warning">New Snippet</a></li>
         <li class="header">MAIN NAVIGATION</li>
-        <li><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="#"><i class="fa fa-users"></i> <span>Team</span></a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="team.php"><i class="fa fa-users"></i> <span>Team</span></a></li>
         <li class="header">LABELS<div class="pull-right"><a href="add_label.php"><i class="fa fa-plus" aria-hidden="true"></i></a></div></li>
         <li><a href="favourites.php"><i class="fa fa-heart text-red"></i> <span>Favourites</span></a></li>
         <?php 
