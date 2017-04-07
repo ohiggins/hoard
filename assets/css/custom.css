@@ -239,3 +239,14 @@ border-color: #ddd !important;
 	width: 75px;
 	margin: auto;
 }
+
+ul.sidebar-menu li.button {
+	padding: 0px 10px 10px 10px;
+}
+
+ul.sidebar-menu li.button a {
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	padding: 8px;
+}

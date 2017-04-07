@@ -80,10 +80,10 @@ $user->set_id($current_user['user_id']);
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo $baseurl ?>/profile.php?id=<?php echo $user->get_id(); ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="/logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo $baseurl ?>/logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -113,7 +113,11 @@ $user->set_id($current_user['user_id']);
               </span>
         </div>
       </form>
+      
+
+      
       <ul class="sidebar-menu">
+	    <li class="button"><a href="<?php echo $baseurl ?>/add.php" class="btn-sm btn-block btn-warning">New Snippet</a></li>
         <li class="header">MAIN NAVIGATION</li>
         <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="#"><i class="fa fa-users"></i> <span>Team</span></a></li>

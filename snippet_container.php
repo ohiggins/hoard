@@ -108,7 +108,7 @@ $author->set_id($authorid);
 				<div class="box box-widget widget-user-2">
 					<div class="widget-user-header bg-yellow">
 						<div class="widget-user-image">
-							<img class="img-circle" src="<?php echo $author->get_gravatar(); ?>g" alt="User Avatar">
+							<img class="img-circle" src="<?php echo $author->get_gravatar(); ?>" alt="User Avatar">
             			</div>
 						<h3 class="widget-user-username"><?php echo $author->get_name(); ?></h3>
 						<h5 class="widget-user-desc">Lead Developer</h5>
