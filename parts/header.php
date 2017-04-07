@@ -4,10 +4,8 @@ ini_set("display_errors", 1);
 
 $login_required = true;
 require_once('app/login_check.php');
-include('app/config.php'); 
-include('app/functions.php'); 
-include('app/db.php');
-
+require_once('app/config.php');
+require_once('app/functions.php'); 
 
 $user = new User();
 $user->set_id($current_user['user_id']); 
@@ -101,11 +99,11 @@ $user->set_id($current_user['user_id']);
       </div>
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
+
   <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
+
     <section class="sidebar">
-      <!-- search form -->
+
       <form action="search.php" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -115,16 +113,22 @@ $user->set_id($current_user['user_id']);
               </span>
         </div>
       </form>
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="#"><i class="fa fa-users"></i> <span>Team</span></a></li>
         <li class="header">LABELS<div class="pull-right"><a href="add_label.php"><i class="fa fa-plus" aria-hidden="true"></i></a></div></li>
         <li><a href="favourites.php"><i class="fa fa-heart text-red"></i> <span>Favourites</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        <?php 
+	    	$labels = mysqli_query($mysqli, "SELECT * FROM labels ORDER BY label_name");
+			while ($row_labels = mysqli_fetch_array($labels, MYSQLI_ASSOC)) {
+			$label = new Label();
+			$label->set_id($row_labels['label_id']);
+	    ?>
+        <li><a href="search.php?q=%23<?php echo str_replace(' ', '_', $label->get_name()); ?>"><i class="fa fa-circle" aria-hidden="true" style="color: <?php echo $label->get_hex(); ?>;"></i> <span><?php echo $label->get_name(); ?></span></a></li>
+        <?php 
+	        }
+	    ?>
       </ul>
     </section>
     <!-- /.sidebar -->
