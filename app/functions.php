@@ -26,7 +26,7 @@ class User
 	}
 	
 	function get_name() {
-		include('db.php');
+		include('config.php');
 		$userid = $this->id;
 		$query = mysqli_query($mysqli, "SELECT name FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
@@ -35,7 +35,7 @@ class User
 	}
 	
 	function get_email() {
-		include('db.php');
+		include('config.php');
 		$userid = $this->id;
 		$query = mysqli_query($mysqli, "SELECT email FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
@@ -44,7 +44,7 @@ class User
 	}
 
 	function get_gravatar() {
-		include('db.php');
+		include('config.php');
 		$userid = $this->id;
 		$query = mysqli_query($mysqli, "SELECT email FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
@@ -54,7 +54,7 @@ class User
 	}
 	
 	function get_title() {
-		include('db.php');
+		include('config.php');
 		$userid = $this->id;
 		$query = mysqli_query($mysqli, "SELECT title FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
@@ -64,7 +64,7 @@ class User
 	}
 	
 	function get_timezone() {
-		include('db.php');
+		include('config.php');
 		$userid = $this->id;
 		$query = mysqli_query($mysqli, "SELECT timezone FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
@@ -74,7 +74,7 @@ class User
 	}
 	
 	function get_permissions() {
-		include('db.php');
+		include('config.php');
 		$userid = $this->id;
 		$query = mysqli_query($mysqli, "SELECT permissions FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
@@ -84,7 +84,7 @@ class User
 	}
 	
 	function is_admin() {
-		include('db.php');
+		include('config.php');
 		$userid = $this->id;
 		$query = mysqli_query($mysqli, "SELECT permissions FROM users WHERE user_id = $userid");
 		if ($row_users = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
@@ -117,7 +117,7 @@ class Snippet
 	}
 	
 	function get_title() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$snippet_title = mysqli_query($mysqli, "SELECT snippet_title FROM snippets WHERE snippet_id = $id");
 		if ($row_snippets = mysqli_fetch_array($snippet_title, MYSQLI_ASSOC)) {
@@ -126,7 +126,7 @@ class Snippet
 	}
 	
 	function get_date() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$snippet_date = mysqli_query($mysqli, "SELECT snippet_published FROM snippets WHERE snippet_id = $id");
 		if ($row_snippets = mysqli_fetch_array($snippet_date, MYSQLI_ASSOC)) {
@@ -135,7 +135,7 @@ class Snippet
 	}
 	
 	function get_description() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$snippet_description = mysqli_query($mysqli, "SELECT snippet_description FROM snippets WHERE snippet_id = $id");
 		if ($snippet_description && $row_snippets = mysqli_fetch_array($snippet_description, MYSQLI_ASSOC)) {
@@ -144,7 +144,7 @@ class Snippet
 	}
 	
 	function get_author() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$snippet_author = mysqli_query($mysqli, "SELECT snippet_author FROM snippets WHERE snippet_id = $id");
 		if ($row_snippets = mysqli_fetch_array($snippet_author, MYSQLI_ASSOC)) {
@@ -153,7 +153,7 @@ class Snippet
 	}
 	
 	function get_author_name() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$snippet_author = mysqli_query($mysqli, "SELECT snippet_author FROM snippets WHERE snippet_id = $id");
 		if ($row_snippets = mysqli_fetch_array($snippet_author, MYSQLI_ASSOC)) {
@@ -166,7 +166,7 @@ class Snippet
 	}
 	
 	function get_labels() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$query = mysqli_query($mysqli, "SELECT label_id FROM tagging WHERE snippet_id = $id");
 		$result = mysqli_fetch_all($query, MYSQLI_ASSOC);
@@ -194,7 +194,7 @@ class Entry
 	}
 	
 	function get_name() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$entry_name = mysqli_query($mysqli, "SELECT entry_name FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($entry_name, MYSQLI_ASSOC)) {
@@ -203,7 +203,7 @@ class Entry
 	}
 	
 	function get_content() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$entry_content = mysqli_query($mysqli, "SELECT entry_content FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($entry_content, MYSQLI_ASSOC)) {
@@ -212,7 +212,7 @@ class Entry
 	}
 	
 	function get_language() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$entry_language = mysqli_query($mysqli, "SELECT entry_language FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($entry_language, MYSQLI_ASSOC)) {
@@ -221,7 +221,7 @@ class Entry
 	}
 	
 	function get_parent() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$snippet_id = mysqli_query($mysqli, "SELECT snippet_id FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($snippet_id, MYSQLI_ASSOC)) {
@@ -257,7 +257,7 @@ class Label
 	}
 	
 	function get_name() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$label_name = mysqli_query($mysqli, "SELECT label_name FROM labels WHERE label_id = $id");
 		if ($row_labels = mysqli_fetch_array($label_name, MYSQLI_ASSOC)) {
@@ -266,7 +266,7 @@ class Label
 	}	
 	
 	function get_hex() {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$label_hex = mysqli_query($mysqli, "SELECT label_hex FROM labels WHERE label_id = $id");
 		if ($row_labels = mysqli_fetch_array($label_hex, MYSQLI_ASSOC)) {
@@ -275,7 +275,7 @@ class Label
 	}	
 	
 	function has_label($snippet_id) {
-		include('db.php');
+		include('config.php');
 		$id = $this->id;
 		$has_label = mysqli_query($mysqli, "SELECT * FROM tagging WHERE label_id = $id AND snippet_id = $snippet_id");
 		if ($row_labels = mysqli_fetch_array($has_label, MYSQLI_ASSOC)) {
@@ -308,7 +308,7 @@ class Search {
 	}
 	
 	function search_label() {
-		include('db.php');
+		include('config.php');
 		$query = $this->query;
 		$search_label = getBetween($query,"#"," ");
 		if($search_label) {
@@ -319,7 +319,7 @@ class Search {
 	}
 	
 	function search_author() {
-		include('db.php');
+		include('config.php');
 		$query = $this->query;
 		$search_label = getBetween($query,"@"," ");
 		if($search_label) {
@@ -330,7 +330,7 @@ class Search {
 	}
 	
 	function search_order() {
-		include('db.php');
+		include('config.php');
 		$query = $this->query;
 		$search_label = getBetween($query,"^"," ");
 		if($search_label) {
@@ -350,7 +350,7 @@ class Search {
 	}
 		
 	function query_label() {
-		include('db.php');
+		include('config.php');
 		$query = $this->query;
 		$search_label = getBetween($query,"#"," ");
 		if($search_label) {

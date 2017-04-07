@@ -33,7 +33,7 @@ if (!isset($_POST['description']) || trim($_POST['description']) == '') {
 }
 
 // Connect to database and insert entry
-require_once('db.php');
+require_once('config.php');
 
 $snippet_title = "'".$mysqli->escape_string(trim($_POST['title']))."'";
 $snippet_description = "'".$mysqli->escape_string(trim($_POST['description']))."'";

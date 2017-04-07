@@ -29,7 +29,7 @@ $current_user['loggedin'] = false;
 
 if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') { // user has a session already?
 	
-	require_once('db.php');
+	require_once('config.php');
 	
 	$user_session_complete_token = trim($_COOKIE['hoard_session']);
 	if (strpos($user_session_complete_token, ':') === false) {
@@ -73,7 +73,7 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 	
 } else if (isset($_POST['e']) && isset($_POST['p'])) { // user is trying to log in?
 	
-	require_once('db.php');
+	require_once('config.php');
 	
 	// login flood control
 	$has_flood_control_limit = false;

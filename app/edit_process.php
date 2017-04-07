@@ -35,7 +35,7 @@ if (!isset($_POST['entry']) || trim($_POST['entry']) == '') {
 }
 
 // Connect to database and insert entry
-require_once('db.php');
+require_once('config.php');
 
 $new_entry_snippet = "'".$mysqli->escape_string(trim($_POST['snippet']))."'";
 $new_entry_content = "'".$mysqli->escape_string(trim($_POST['entry']))."'";

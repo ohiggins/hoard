@@ -26,7 +26,7 @@ if($snippet->get_author() != $user->get_id()) {
 }
 
 // Connect to database and insert entry
-require_once('db.php');
+require_once('config.php');
 
 $entry_id = $entry->get_id();
 

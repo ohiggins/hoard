@@ -15,8 +15,6 @@ if (!isset($_POST['entry']) || trim($_POST['entry']) == '') {
 session_start();
 $userid = $_SESSION['userid'];
 
-require_once('db.php');
-
 // ok, make a new snippet
 
 $new_snippet_title = "'".$mysqli->escape_string(trim($_POST['title']))."'";

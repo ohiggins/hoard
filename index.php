@@ -18,7 +18,7 @@
 
 <?php
 	
-include('app/db.php');
+include('app/config.php');
 $user = new User();
 $user->set_id($current_user['user_id']); 
 $userid = $user->get_id();
