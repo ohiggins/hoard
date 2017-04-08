@@ -114,6 +114,11 @@
 	font-size: 14px;
 }
 
+.sidebar {
+	height: calc(100vh - 55px);
+	position: relative;
+}
+
 .new-entry .ace_editor {
 	height: calc(100vh - 225px);
 	width: 100%;

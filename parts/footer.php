@@ -50,6 +50,7 @@
 <script src="/vendor/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script>
 	$(".my-colorpicker1").colorpicker();
+	$('.sidebar').perfectScrollbar({ wheelPropagation: true, });
 </script>
 
 <script>

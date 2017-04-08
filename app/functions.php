@@ -134,6 +134,18 @@ class Snippet
 		}
 	}
 	
+	function get_pretty_date($format, $timezone) {
+		include('config.php');
+		$id = $this->id;
+		$snippet_date = mysqli_query($mysqli, "SELECT snippet_published FROM snippets WHERE snippet_id = $id");
+		if ($row_snippets = mysqli_fetch_array($snippet_date, MYSQLI_ASSOC)) {
+			date_default_timezone_set($timezone);
+			$raw = $row_snippets['snippet_published'];	
+			return date($format, strtotime($raw));
+		}
+		
+	}
+	
 	function get_description() {
 		include('config.php');
 		$id = $this->id;
@@ -162,6 +174,15 @@ class Snippet
 		$snippet_author_name = mysqli_query($mysqli, "SELECT name FROM users WHERE user_id = $authorid");
 		if ($row_snippets = mysqli_fetch_array($snippet_author_name, MYSQLI_ASSOC)) {
 			return htmlentities($row_snippets['name']);	
+		}
+	}
+	
+	function get_visibility() {
+		include('config.php');
+		$id = $this->id;
+		$snippet_visibility = mysqli_query($mysqli, "SELECT snippet_visibility FROM snippets WHERE snippet_id = $id");
+		if ($row_snippets = mysqli_fetch_array($snippet_visibility, MYSQLI_ASSOC)) {
+			return htmlentities($row_snippets['snippet_visibility']);	
 		}
 	}
 	

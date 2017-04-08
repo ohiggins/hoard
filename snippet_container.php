@@ -11,7 +11,6 @@ $login_required = true;
 require_once('app/login_check.php');
 include('app/config.php'); 
 include('app/functions.php'); 
-include('app/db.php');
 $snippets = mysqli_query($mysqli, "SELECT * FROM snippets");
 
 $user = new User();
@@ -79,7 +78,7 @@ $author->set_id($authorid);
 				?>
 				
 				<div class="entry-header">
-					<i class="fa fa-code" aria-hidden="true"></i><span class="lang"><?php echo $entry->pretty_lang($entry->get_language()); ?></span> <?php echo $entry->get_name(); ?>
+					<i class="fa fa-code" aria-hidden="true"></i><span class="lang"><?php echo $entry->pretty_lang($entry->get_language()); ?></span> <?php echo $entry->get_name(); ?> 
 					<div class="pull-right"><a href="/edit.php?id=<?php echo $entry->get_id() ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT</a></div>
 				</div>
 				
@@ -133,8 +132,19 @@ $author->set_id($authorid);
               <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
-            <div class="box-body" style="display: block;">
-              The body of the box
+<div class="box-body no-padding">
+              <table class="table table-striped">
+                <tbody>
+                <tr>
+                  <td><i class="fa fa-calendar" aria-hidden="true"></i> Posted <?php echo $snippet->get_pretty_date('F j, Y (H:i)', $user->get_timezone()); ?></td>
+                </tr>
+                <tr>
+                  <td><?php if($snippet->get_visibility() == 0) { echo '<i class="fa fa-eye" aria-hidden="true"></i> Only Me'; } else if($snippet->get_visibility() == 1) { echo '<i class="fa fa-users"></i> Shared with Team'; } elseif($snippet->get_visibility() == 2) { echo '<i class="fa fa-globe"></i> Public'; } ?></td>
+                </tr>
+                <tr>
+                  <td><a href="/snippet.php?id=<?php echo $snippet->get_id(); ?>"><i class="fa fa-link" aria-hidden="true"></i> Permalink</a></td>
+                </tr>
+              </tbody></table>
             </div>
             <!-- /.box-body -->
           </div>

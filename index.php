@@ -42,7 +42,7 @@ $snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author =
 					<a href="#snippet-<?php echo $snippet->get_id(); ?>" data-toggle="tab">
 						<img src="<?php echo $author2->get_gravatar(); ?>" class="avatar">
 						<span class="title"><?php echo $snippet->get_title(); ?></span><br /> 
-						<span class="meta">Posted <?php echo $snippet->get_date(); ?> by <?php echo $author2->get_name(); ?></span>
+						<span class="meta">Posted <?php echo $snippet->get_pretty_date('F j, Y', $user->get_timezone()); ?> by <?php echo $author2->get_name(); ?></span>
 									    <div class="chooser-labels">
 				    <?php 
 						foreach($snippet->get_labels() as $labels) { 
