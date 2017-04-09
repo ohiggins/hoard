@@ -88,7 +88,6 @@ if(mysqli_num_rows($snippets) != 0) {
 
 <div class="col-xs-9">
     <div class="tab-content scrolly">
-	    <?php var_dump($snippets); ?>
 		<div class="test"></div>
     </div>
 </div>

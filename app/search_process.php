@@ -69,6 +69,7 @@ if($search_author) {
 	$author_search = " AND snippet_author = '$user_id'";
 }
 
+
 // Favourites Search -------------------
 
 // Nice and easy this one, if the search contains <3 
@@ -122,7 +123,6 @@ $permissions_search = " AND (snippet_author = '$userid' OR snippet_visibility !=
 
 $final_search = $contents_search . $label_search . $author_search . $favourites_search . $permissions_search . $order_search;
 $snippets = mysqli_query($mysqli, "$final_search");
-echo $final_search;
 
 ?>
 
