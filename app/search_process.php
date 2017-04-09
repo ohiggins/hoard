@@ -85,9 +85,36 @@ if($search_favourites) {
 
 // Order Search -------------------
 
+// Another easy one, a couple empty variables and an order_name for a more descriptive front-end
+$order_search = null;
+$order_name = null;
 
-// Assemble our final query
-$final_search = $contents_search . $label_search . $author_search . $favourites_search;
+if($search_order) {
+	if(strpos($search_order, "title") !== false) { 
+		$order_search = ' ORDER BY snippet_title ASC';
+		$order_name = 'Title, Alphabetical';
+	}
+	
+	if(strpos($search_order, "title_r") !== false) { 
+		$order_search = ' ORDER BY snippet_title DESC';
+		$order_name = 'Title, Reverse Alphabetical';
+	}
+	
+	if(strpos($search_order, "date") !== false) { 
+		$order_search = ' ORDER BY snippet_published DESC';
+		$order_name = 'Date, Newest First';
+	}
+	
+	if(strpos($search_order, "date_r") !== false) { 
+		$order_search = ' ORDER BY snippet_published ASC';
+		$order_name = 'Date, Oldest First';
+	}
+}
+
+
+// Final Query -------------------
+
+$final_search = $contents_search . $label_search . $author_search . $favourites_search . $order_search;
 $snippets = mysqli_query($mysqli, "$final_search");
 echo $final_search;
 

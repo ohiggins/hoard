@@ -41,7 +41,7 @@ include('app/search_process.php');
 		    <?php if($search_contents) { ?>FOR <strong><?php echo $search_contents; ?></strong><?php } ?>
 		    <?php if($search->search_label()) { ?>FILED UNDER <strong><?php if($label_results['label_name']) { echo $label_results['label_name']; } else { echo str_replace('_', ' ', $search->search_label()); } ?></strong><?php } ?>
 		    <?php if($search->search_author()) { ?>POSTED BY <strong><?php if($author_results['name']) { echo $author_results['name']; } else { echo str_replace('_', ' ', $search->search_author()); } ?></strong> <?php } ?>
-		    <?php if($search->search_order()) { ?>ORDERED BY <strong><?php echo $search->search_order(); ?></strong> <?php } ?>
+		    <?php if($order_name) { ?>ORDERED BY <strong><?php echo $order_name ?></strong> <?php } ?>
 		    <?php if($search->search_favourite()) { ?>MARKED AS <strong>FAVOURITES</strong> <?php } ?>
 		</div>
 	    <?php
