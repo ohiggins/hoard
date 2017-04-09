@@ -11,6 +11,7 @@
 $search_label = $search->search_label(); 
 $search_author = $search->search_author();
 $search_order = $search->search_order();
+$search_favourites = $search->search_favourite();
 
 // Strip out everything else and leave us with the primary search string
 $search_contents = $mysqli->escape_string(trim(str_replace(
@@ -68,9 +69,25 @@ if($search_author) {
 	$author_search = " AND snippet_author = '$user_id'";
 }
 
+// Favourites Search -------------------
+
+// Nice and easy this one, if the search contains <3 
+if($search_favourites) {
+	
+	// Cross check the favourites table and grab snippet IDs that match the current user
+	$favourites_search = " AND snippet_id IN (SELECT (snippet_id) FROM favourites WHERE user_id = '$userid')";
+} else {
+	
+	// Otherwise give 'em nothing
+	$favourites_search = null;
+}
+
+
+// Order Search -------------------
+
 
 // Assemble our final query
-$final_search = $contents_search . $label_search . $author_search;
+$final_search = $contents_search . $label_search . $author_search . $favourites_search;
 $snippets = mysqli_query($mysqli, "$final_search");
 echo $final_search;
 
