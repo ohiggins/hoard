@@ -48,20 +48,29 @@ if($search_label) {
 
 
 // User Search -------------------
-/**
-// Grab user from search, work out what ID that user has, fish those snippet ID's out of snippets and write our query
+
+// Get author from search query (Anything between an @ and a space)
 $search_author = $search->search_author(); 
-$author_search = '';
+
+// Set an empty variable in case there was no author search
+$author_search = null;
+
 if($search_author) {
-$author_query = mysqli_query($mysqli, "SELECT * FROM users WHERE name LIKE '%$search_author%'");
-$author_results = mysqli_fetch_array($author_query, MYSQLI_ASSOC);
-if ($author_results) { $user_id = htmlentities($author_results['user_id']); } else { $user_id = false; }	
-if ($user_id) { $author_search = " AND snippet_author = $user_id"; } else { $author_search = ""; }
+	
+	// Find the user in our users database
+	$author_query = mysqli_query($mysqli, "SELECT * FROM users WHERE name LIKE '%$search_author%' LIMIT 1");
+	$author_results = mysqli_fetch_array($author_query, MYSQLI_ASSOC);
+	
+	// Set the user id, run a query we know will fail otherwise
+	if($author_query) { $user_id = htmlentities($author_results['user_id']); } else { $user_id = '$search_author'; }	
+	
+	// Create our user search
+	$author_search = " AND snippet_author = '$user_id'";
 }
-**/
+
 
 // Assemble our final query
-$final_search = $contents_search . $label_search;
+$final_search = $contents_search . $label_search . $author_search;
 $snippets = mysqli_query($mysqli, "$final_search");
 echo $final_search;
 

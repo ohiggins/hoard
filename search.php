@@ -1,4 +1,21 @@
-<?php include('parts/header.php'); ?>
+<?php include('parts/header.php'); 
+	
+	if(!empty($_GET["q"])) {
+	$q = htmlspecialchars($_GET["q"]) . ' ';
+} else {
+	$q = false;
+}
+
+include('app/config.php');
+$user = new User();
+$user->set_id($current_user['user_id']);
+$userid = $user->get_id();
+
+$search = new Search();
+$search->set_query($q);
+
+include('app/search_process.php');
+?>
 
 
   <!-- Content Wrapper. Contains page content -->
@@ -15,26 +32,6 @@
     </section>
 
 
-<?php
-
-if(!empty($_GET["q"])) {
-	$q = htmlspecialchars($_GET["q"]) . ' ';
-} else {
-	$q = false;
-}
-
-include('app/config.php');
-$user = new User();
-$user->set_id($current_user['user_id']);
-$userid = $user->get_id();
-
-$search = new Search();
-$search->set_query($q);
-
-include('app/search_process.php');
-
-?>
-
 
 <div class="col-xs-3" style="padding: 0;">
 	<div class="chooser" style="height: calc(100vh - 135px); overflow-x: hidden;">
@@ -42,8 +39,8 @@ include('app/search_process.php');
 	    <div class="chooser-label">
 		    <strong><?php if(mysqli_num_rows($snippets) > 0) { echo mysqli_num_rows($snippets); } else { echo '0'; } ?></strong>  RESULTS  
 		    <?php if($search_contents) { ?>FOR <strong><?php echo $search_contents; ?></strong><?php } ?>
-		    <?php if($search->search_label()) { ?>FILED UNDER <strong><?php if($label_results['label_name']) { echo $label_results['label_name']; } else { echo $search->search_label(); } ?></strong><?php } ?>
-		    <?php if($search->search_author()) { ?>POSTED BY <strong><?php echo str_replace('_', ' ', $search->search_author()); ?></strong> <?php } ?>
+		    <?php if($search->search_label()) { ?>FILED UNDER <strong><?php if($label_results['label_name']) { echo $label_results['label_name']; } else { echo str_replace('_', ' ', $search->search_label()); } ?></strong><?php } ?>
+		    <?php if($search->search_author()) { ?>POSTED BY <strong><?php if($author_results['name']) { echo $author_results['name']; } else { echo str_replace('_', ' ', $search->search_author()); } ?></strong> <?php } ?>
 		    <?php if($search->search_order()) { ?>ORDERED BY <strong><?php echo $search->search_order(); ?></strong> <?php } ?>
 		    <?php if($search->search_favourite()) { ?>MARKED AS <strong>FAVOURITES</strong> <?php } ?>
 		</div>
