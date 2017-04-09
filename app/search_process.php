@@ -112,9 +112,15 @@ if($search_order) {
 }
 
 
+// Permissions Check -------------------
+
+// Only show snippets the user owns or has permission to see (set to team or public)
+$permissions_search = " AND (snippet_author = '$userid' OR snippet_visibility != 0)";
+
+
 // Final Query -------------------
 
-$final_search = $contents_search . $label_search . $author_search . $favourites_search . $order_search;
+$final_search = $contents_search . $label_search . $author_search . $favourites_search . $permissions_search . $order_search;
 $snippets = mysqli_query($mysqli, "$final_search");
 echo $final_search;
 
