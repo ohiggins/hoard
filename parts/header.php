@@ -90,7 +90,7 @@ $user->set_id($current_user['user_id']);
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#"><i class="fa fa-gears"></i></a>
+            <a href="admin.php"><i class="fa fa-gears"></i></a>
           </li>
           <li>
             <a href="#" data-toggle="modal" data-target="#about"><i class="fa fa-info"></i></a>
