@@ -1,6 +1,7 @@
 <?php
 
-include('config.php');
+include('../classes/model.php');
+include('../config.php');
 
 // make a new goddamn user
 
@@ -36,8 +37,6 @@ function get_key($bit_length = 128) {
 	return null;
 }
 
-require_once('dbconn_mysql.php');
-
 // ok, make a new user
 
 $new_user_email_db = "'".$mysqli->escape_string(trim($_POST['e']))."'";
@@ -59,6 +58,6 @@ if (!$new_user_row) {
 
 $new_user_id = $mysqli->insert_id;
 
-header('Location: login.php?register_success');
+header('Location: ../../login.php?register_success');
 
 ?>

@@ -43,7 +43,7 @@ $user->set_id($current_user['user_id']);
 		if($snippet->get_author() == $user->get_id()) {
 	?>
 	
-	<form action="app/entry_process.php" method="post">
+	<form action="app/process/entry_process.php" method="post">
 		<div class="row">
 			<div class="col-md-8">
 				<div class="entry-header">

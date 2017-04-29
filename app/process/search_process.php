@@ -7,6 +7,8 @@
 	
 ********************************/
 
+require_once('app/head.php');
+
 // Define our special search terms (#, @, ^, <3)
 $search_label = $search->search_label(); 
 $search_author = $search->search_author();

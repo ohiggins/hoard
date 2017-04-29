@@ -26,7 +26,7 @@ $_SESSION['userid'] = $current_user['user_id'];
 
 <div id="register-prompt">
 <h1>add snippet</h1>
-<form action="app/add_process.php" method="post">
+<form action="app/process/add_process.php" method="post">
 	
 <p><label>Snippet Title:</label> <input tabindex="1" id="start-here" name="title" type="text" placeholder="test" /></p>
 <p><label>Snippet Entry:</label> <textarea name="entry" type="text"></textarea></p>

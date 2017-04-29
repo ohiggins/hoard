@@ -14,7 +14,7 @@ $userid = $user->get_id();
 $search = new Search();
 $search->set_query($q);
 
-include('app/search_process.php');
+include('app/process/search_process.php');
 ?>
 
 

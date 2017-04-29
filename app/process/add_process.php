@@ -1,6 +1,6 @@
 <?php
 
-include('config.php');
+require_once('../head.php');
 
 // make a new snippet
 

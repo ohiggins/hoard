@@ -7,20 +7,9 @@
 	
 ********************************/
 
-$login_required = true;
-require_once('app/login_check.php');
-require_once('app/config.php');
-require_once('app/functions.php'); 
-require_once('app/classes/user.php'); 
-require_once('app/classes/label.php'); 
-require_once('app/classes/search.php'); 
-require_once('app/classes/snippet.php'); 
-require_once('app/classes/user.php'); 
+require_once('../app/head.php');
 
 $snippets = mysqli_query($mysqli, "SELECT * FROM snippets");
-
-$user = new User();
-$user->set_id($current_user['user_id']); 
 	
 if(!empty($_GET["id"])) {
 	$id = htmlspecialchars($_GET["id"]);

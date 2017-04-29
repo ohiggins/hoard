@@ -108,7 +108,7 @@ $snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author =
 $( document ).ready(function() {
    $.ajax({
      type: "GET",
-     url: 'snippet_container.php',
+     url: 'parts/snippet_container.php',
      data: "id=" + <?php echo $startingid; ?>, // appears as $_GET['id'] @ your backend side
      success: function(data) {
            // data is ur summary
@@ -125,7 +125,7 @@ function getSummary(id)
 $('.test').html('<div class="overlay"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>');
    $.ajax({
      type: "GET",
-     url: 'snippet_container.php',
+     url: 'parts/snippet_container.php',
      data: "id=" + id, // appears as $_GET['id'] @ your backend side
      success: function(data) {
            // data is ur summary

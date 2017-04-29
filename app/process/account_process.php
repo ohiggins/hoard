@@ -7,8 +7,7 @@
 	
 ********************************/
 
-require_once('login_check.php');
-include('functions.php');
+require_once('../head.php');
 
 // Initialise current user object
 $user = new User();

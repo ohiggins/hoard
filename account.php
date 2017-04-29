@@ -28,7 +28,7 @@
 				</div>
 				<?php } ?>
 				
-				<form action="app/account_process.php" method="post">
+				<form action="app/process/account_process.php" method="post">
 					<div class="box box-warning">
 						<div class="box-header with-border">
 							<h3 class="box-title">Edit Account Details</h3>

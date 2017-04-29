@@ -7,8 +7,7 @@
 	
 ********************************/
 
-require_once('login_check.php');
-include('functions.php');
+require_once('../head.php');
 
 $user = new User();
 $user->set_id($current_user['user_id']); 

@@ -7,8 +7,7 @@
 	
 ********************************/
 
-require_once('login_check.php');
-include('functions.php');
+require_once('../head.php');
 
 $user = new User();
 $user->set_id($current_user['user_id']); 
@@ -33,8 +32,6 @@ if (!isset($_POST['description']) || trim($_POST['description']) == '') {
 }
 
 // Connect to database and insert entry
-require_once('config.php');
-
 $snippet_title = "'".$mysqli->escape_string(trim($_POST['title']))."'";
 $snippet_description = "'".$mysqli->escape_string(trim($_POST['description']))."'";
 $snippet_visibility = "'".$mysqli->escape_string(trim($_POST['visibility']))."'";
@@ -61,7 +58,7 @@ foreach ($labelpost as $labeloption) {
 }
  
 // Redirect back to snippet page with success message
-header('Location: ../snippet.php?id=' . $snippet->get_id() . '&details_success');
+header('Location: ../../snippet.php?id=' . $snippet->get_id() . '&details_success');
 
 ?>
 

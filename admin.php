@@ -28,6 +28,22 @@
 				</div>
 				<?php } ?>
 				
+				<?php if (strpos($_SERVER['REQUEST_URI'], "permissions_success") !== false){ ?>
+				<div class="alert alert-success alert-dismissible">
+				    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				    <h4><i class="icon fa fa-check"></i> Permissions Updated</h4>
+				    User permissions updated successfully.
+				</div>
+				<?php } ?>
+				
+				<?php if (strpos($_SERVER['REQUEST_URI'], "delete_success") !== false){ ?>
+				<div class="alert alert-success alert-dismissible">
+				    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				    <h4><i class="icon fa fa-check"></i> User Deleted</h4>
+				    User deleted successfully.
+				</div>
+				<?php } ?>
+				
 				<div class="nav-tabs-custom">
             <ul class="nav nav-tabs warning-tabs">
               <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Admin Settings</a></li>
@@ -67,16 +83,18 @@
               
               
               
-              <!-- User Permissions -->
+              <!-- User Listing -->
               <div class="tab-pane" id="tab_2">
 	              
 	              
 	              <table class="table table-bordered">
                 <tbody><tr>
-                  <th style="width: 10px">#</th>
-                  <th>Task</th>
-                  <th>Progress</th>
-                  <th style="width: 40px">Label</th>
+                  <th>ID</th>
+                  <th>Avatar</th>
+                  <th>Display Name</th>
+                  <th>Email</th>
+                  <th>Permissions</th>
+                  <th>Delete</th>
                 </tr>
 
 	              
@@ -90,13 +108,35 @@
 			?>
 			
 			     <tr>
+				     <td><?php echo $author->get_id(); ?></td>
                   <td><img class="img-circle" src="<?php echo $author->get_gravatar(); ?>" alt="User Avatar"></td>
-                  <td>Fix and squish bugs</td>
+                  <td><?php echo $author->get_name(); ?></td>
                   <td>
-<?php echo $author->get_name(); ?>
+				  	<?php echo $author->get_email(); ?>
                   </td>
-                  <td><?php echo $author->get_id(); ?></td>
+                  <td><?php if($author->is_admin()) { ?><a href="app/process/user_permissions_process.php?id=<?php echo $author->get_id(); ?>">Revoke Admin</a><?php } else { ?><a href="app/process/user_permissions_process.php?id=<?php echo $author->get_id(); ?>">Grant Admin</a><?php } ?></td>
+                  <td><a href="#" data-toggle="modal" data-target="#delete-<?php echo $author->get_id(); ?>">Delete User</a></td>
                 </tr>
+                
+
+           <div class="modal fade" id="delete-<?php echo $author->get_id(); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+			      </div>
+			      <div class="modal-body">
+				      <p>Deleting this user will also delete all of their snippets.</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
+			        <a href="app/process/delete_user_process.php?id=<?php echo $author->get_id(); ?>"><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> I would like to delete <?php echo $author->get_name(); ?> and all their snippets.</button></a>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+                
 			
 					<?php } ?>
 			
@@ -110,7 +150,7 @@
               
               <!-- Add User -->
               <div class="tab-pane" id="tab_3">
-<form action="app/add_user_process.php" method="post">
+<form action="app/process/add_user_process.php" method="post">
 <p><label>Your Email:</label> <input tabindex="1" id="start-here" name="e" type="email" placeholder="email address" /></p>
 <p><label>Your Password:</label> <input tabindex="2" name="p1" type="password" /></p>
 <p><label>Your Password:</label> <input tabindex="3" name="p2" type="password" /></p>
@@ -139,5 +179,7 @@
 			</div>
 		</div>
 	</div>
+	
+
 	
 <?php include('parts/footer.php'); ?>

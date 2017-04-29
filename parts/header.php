@@ -1,22 +1,5 @@
 <?php 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
-$login_required = true;
-
-// There must be a better way to deal with these includes?
-require_once('app/login_check.php');
-require_once('app/config.php');
-require_once('app/functions.php'); 
-require_once('app/classes/user.php'); 
-require_once('app/classes/label.php'); 
-require_once('app/classes/search.php'); 
-require_once('app/classes/snippet.php'); 
-require_once('app/classes/user.php'); 
-
-$user = new User();
-$user->set_id($current_user['user_id']); 
-
+	require_once('app/head.php');
 ?>
 
 <!DOCTYPE html>

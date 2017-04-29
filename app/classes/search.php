@@ -1,6 +1,6 @@
 <?php
  
-class Search {
+class Search extends Model {
 	var $search;
 	
 	function set_query($query) {
@@ -8,9 +8,9 @@ class Search {
 	}
 	
 	function search_label() {
-		global $mysqli;
+		$mysqli = $this->mysqli;
 		$query = $this->query;
-		$search_label = getBetween($query,"#"," ");
+		$search_label = get_between($query,"#"," ");
 		if($search_label) {
 			return $mysqli->escape_string($search_label);
 		} else {
@@ -19,9 +19,9 @@ class Search {
 	}
 	
 	function search_author() {
-		global $mysqli;
+		$mysqli = $this->mysqli;
 		$query = $this->query;
-		$search_label = getBetween($query,"@"," ");
+		$search_label = get_between($query,"@"," ");
 		if($search_label) {
 			return $mysqli->escape_string($search_label);
 		} else {
@@ -30,9 +30,9 @@ class Search {
 	}
 	
 	function search_order() {
-		global $mysqli;
+		$mysqli = $this->mysqli;
 		$query = $this->query;
-		$search_label = getBetween($query,"^"," ");
+		$search_label = get_between($query,"^"," ");
 		if($search_label) {
 			return $mysqli->escape_string($search_label);
 		} else {
@@ -41,6 +41,7 @@ class Search {
 	}
 	
 	function search_favourite() {
+		$mysqli = $this->mysqli;
 		$query = $this->query;
 		if(strpos($query, "&lt;3") !== false) {
 			return true;
@@ -50,11 +51,11 @@ class Search {
 	}
 		
 	function query_label() {
-		global $mysqli;
+		$mysqli = $this->mysqli;
 		$query = $this->query;
 		$search_label = get_between($query,"#"," ");
 		if($search_label) {
-			$label = mysqli_query($mysqli, "SELECT * FROM labels WHERE label_name LIKE = $search_label");
+			$label = mysqli_query($this->mysqli, "SELECT * FROM labels WHERE label_name LIKE = $search_label");
 			return $mysqli->escape_string(htmlentities($label['label_id']));	
 		} else {
 			return '*';

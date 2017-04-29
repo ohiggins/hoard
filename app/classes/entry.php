@@ -1,9 +1,6 @@
 <?php
-	
-include(dirname(__DIR__) . '/config.php');	
-	
-class Entry
-{
+
+class Entry extends Model {
 	var $entry;
 	
 	function set_id($current_id) { 
@@ -16,36 +13,32 @@ class Entry
 	}
 	
 	function get_name() {
-		include('config.php');
 		$id = $this->id;
-		$entry_name = mysqli_query($mysqli, "SELECT entry_name FROM snippets_entries WHERE entry_id = $id");
+		$entry_name = mysqli_query($this->mysqli, "SELECT entry_name FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($entry_name, MYSQLI_ASSOC)) {
 			return htmlentities($row_entries['entry_name']);	
 		}
 	}
 	
 	function get_content() {
-		include('config.php');
 		$id = $this->id;
-		$entry_content = mysqli_query($mysqli, "SELECT entry_content FROM snippets_entries WHERE entry_id = $id");
+		$entry_content = mysqli_query($this->mysqli, "SELECT entry_content FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($entry_content, MYSQLI_ASSOC)) {
 			return htmlentities($row_entries['entry_content']);	
 		}
 	}
 	
 	function get_language() {
-		include('config.php');
 		$id = $this->id;
-		$entry_language = mysqli_query($mysqli, "SELECT entry_language FROM snippets_entries WHERE entry_id = $id");
+		$entry_language = mysqli_query($this->mysqli, "SELECT entry_language FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($entry_language, MYSQLI_ASSOC)) {
 			return htmlentities($row_entries['entry_language']);	
 		}
 	}
 	
 	function get_parent() {
-		include('config.php');
 		$id = $this->id;
-		$snippet_id = mysqli_query($mysqli, "SELECT snippet_id FROM snippets_entries WHERE entry_id = $id");
+		$snippet_id = mysqli_query($this->mysqli, "SELECT snippet_id FROM snippets_entries WHERE entry_id = $id");
 		if ($row_entries = mysqli_fetch_array($snippet_id, MYSQLI_ASSOC)) {
 			return htmlentities($row_entries['snippet_id']);	
 		}

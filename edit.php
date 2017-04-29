@@ -15,9 +15,6 @@ if(!empty($_GET["id"])) {
 	$id = false;
 }
 
-$user = new User();
-$user->set_id($current_user['user_id']); 
-
 $entry = new Entry();
 $entry->set_id($id); 
 
@@ -25,9 +22,6 @@ $snippet = new Snippet();
 $snippet->set_id($entry->get_parent()); 
 
 ?>
-
-
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper new-entry">
@@ -51,7 +45,7 @@ if($snippet->get_author() == $user->get_id()) {
 
 ?>
 
-	<form action="app/edit_process.php" method="post">
+	<form action="app/process/edit_process.php" method="post">
 		<div class="row">
 			<div class="col-md-8">
 				<div class="entry-header">
@@ -67,6 +61,7 @@ if($snippet->get_author() == $user->get_id()) {
 					</div>
 				<div class="box-body">
 					<input name="entryid" type="hidden" value="<?php echo $_GET['id']; ?>" />
+					<input name="snippet" type="hidden" value="<?php echo $snippet->get_title(); ?>" />
 					<input tabindex="1" id="start-here" name="title" type="text" placeholder="Entry Title" value="<?php echo $entry->get_name(); ?>" class="form-control input-lg" /></p>
 	
 					<script type="text/javascript">

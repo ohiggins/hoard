@@ -47,7 +47,7 @@ if($snippet->get_author() == $user->get_id() OR $user->is_admin()) {
 ?>
 
 <div id="register-prompt">
-<form action="app/details_process.php" method="post">
+<form action="app/process/details_process.php" method="post">
 <input name="snippetid" type="hidden" value="<?php echo $snippet->get_id(); ?>" />
 <p><label>Snippet Title:</label> <input tabindex="1" name="title" value="<?php echo htmlspecialchars($snippet->get_title()); ?>" type="text" placeholder="test" /></p>
 <p><label>Snippet Description:</label> <textarea name="description" type="text"><?php echo htmlspecialchars($snippet->get_description()); ?></textarea></p>
@@ -105,7 +105,7 @@ if($snippet->get_author() == $user->get_id() OR $user->is_admin()) {
 <p><input type="submit" value="add snippet" /></p>
 </form>
 
-<form action="app/delete_snippet_process.php" method="post">
+<form action="app/process/delete_snippet_process.php" method="post">
 	<input name="snippet_id" type="hidden" value="<?php echo $_GET['id']; ?>" />
 	<input type="submit" value="delete snippet!!!!!!!" /></p>
 </form>

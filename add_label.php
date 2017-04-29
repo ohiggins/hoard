@@ -29,7 +29,7 @@
 
 <div id="register-prompt">
 <h1>add snippet entry</h1>
-<form action="app/add_label_process.php" method="post">
+<form action="app/process/add_label_process.php" method="post">
 
 <input name="snippet" type="hidden" value="<?php echo $_GET['id']; ?>" />
 <p><label>Label Title:</label> <input tabindex="1" name="title" type="text" placeholder="test" /></p>
