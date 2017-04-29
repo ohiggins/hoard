@@ -40,14 +40,14 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="/vendor/plugins/fastclick/fastclick.min.js"></script>
-<script src="/vendor/plugins/select2/select2.min.js"></script>
+<script src="/assets/vendor/plugins/fastclick/fastclick.min.js"></script>
+<script src="/assets/vendor/plugins/select2/select2.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/js/app.min.js"></script>
 
-<script src="/vendor/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="/assets/vendor/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script>
 	$(".my-colorpicker1").colorpicker();
 	$('.sidebar').perfectScrollbar({ wheelPropagation: true, });

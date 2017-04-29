@@ -9,8 +9,14 @@
 
 $login_required = true;
 require_once('app/login_check.php');
-include('app/config.php'); 
-include('app/functions.php'); 
+require_once('app/config.php');
+require_once('app/functions.php'); 
+require_once('app/classes/user.php'); 
+require_once('app/classes/label.php'); 
+require_once('app/classes/search.php'); 
+require_once('app/classes/snippet.php'); 
+require_once('app/classes/user.php'); 
+
 $snippets = mysqli_query($mysqli, "SELECT * FROM snippets");
 
 $user = new User();
@@ -29,18 +35,6 @@ $authorid = $snippet->get_author();
 $author->set_id($authorid);
 
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Hoard Alpha</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <script src="/vendor/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-
-</head>
 
 <div class="stretch-container">
 		<div class="row">

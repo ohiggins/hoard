@@ -3,14 +3,20 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 $login_required = true;
+
+// There must be a better way to deal with these includes?
 require_once('app/login_check.php');
 require_once('app/config.php');
 require_once('app/functions.php'); 
+require_once('app/classes/user.php'); 
+require_once('app/classes/label.php'); 
+require_once('app/classes/search.php'); 
+require_once('app/classes/snippet.php'); 
+require_once('app/classes/user.php'); 
 
 $user = new User();
 $user->set_id($current_user['user_id']); 
 
-	
 ?>
 
 <!DOCTYPE html>
@@ -22,15 +28,15 @@ $user->set_id($current_user['user_id']);
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/css/AdminLTE.min.css">
   <link rel="stylesheet" href="assets/css/custom.css">
-  <script src="/vendor/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/assets/vendor/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <!-- jQuery 2.2.3 -->
-	<script src="/vendor/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="/assets/vendor/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
