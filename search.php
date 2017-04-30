@@ -6,9 +6,6 @@
 	$q = false;
 }
 
-include('app/config.php');
-$user = new User();
-$user->set_id($current_user['user_id']);
 $userid = $user->get_id();
 
 $search = new Search();
@@ -129,7 +126,7 @@ if(mysqli_num_rows($snippets) != 0) {
 $( document ).ready(function() {
    $.ajax({
      type: "GET",
-     url: 'snippet_container.php',
+     url: 'parts/snippet_container.php',
      data: "id=" + <?php echo $startingid; ?>, // appears as $_GET['id'] @ your backend side
      success: function(data) {
            // data is ur summary
@@ -146,7 +143,7 @@ function getSummary(id)
 $('.test').html('<div class="overlay"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>');
    $.ajax({
      type: "GET",
-     url: 'snippet_container.php',
+     url: 'parts/snippet_container.php',
      data: "id=" + id, // appears as $_GET['id'] @ your backend side
      success: function(data) {
            // data is ur summary

@@ -13,7 +13,7 @@ require_once('../head.php');
 $id = $_GET['id'];
 
 // Admin permissions required
-if(!$user->is_admin() || !$id) {
+if(!$user->is_admin() || !$id || $user->get_id() == $id) {
 	die('Permission denied');	
 }
 

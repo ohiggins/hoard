@@ -35,6 +35,14 @@ class Label extends Model {
 			return true;
 		}
 	}
+	
+	function is_visible($user_id) {
+		$id = $this->id;
+		$has_label = mysqli_query($this->mysqli, "SELECT * from snippets WHERE snippet_id IN (SELECT (snippet_id) FROM tagging WHERE label_id = '$id') AND (snippet_author = '$user_id' OR snippet_visibility != 0)");
+		if ($row_labels = mysqli_fetch_array($has_label, MYSQLI_ASSOC)) {
+			return true;
+		}
+	}
 }
 
 ?>

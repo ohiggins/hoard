@@ -118,7 +118,7 @@
 			$label = new Label();
 			$label->set_id($row_labels['label_id']);
 	    ?>
-        <li><a href="search.php?q=%23<?php echo str_replace(' ', '_', $label->get_name()); ?>"><i class="fa fa-circle" aria-hidden="true" style="color: <?php echo $label->get_hex(); ?>;"></i> <span><?php echo $label->get_name(); ?></span></a></li>
+        <?php if($label->is_visible($user->get_id())) { ?><li><a href="search.php?q=%23<?php echo str_replace(' ', '_', $label->get_name()); ?>"><i class="fa fa-circle" aria-hidden="true" style="color: <?php echo $label->get_hex(); ?>;"></i> <span><?php echo $label->get_name(); ?></span></a></li><?php } ?>
         <?php 
 	        }
 	    ?>

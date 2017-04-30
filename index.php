@@ -29,7 +29,7 @@ $snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author =
 <div class="col-xs-3" style="padding: 0;">
 	<div class="chooser" style="height: calc(100vh - 135px); overflow-x: hidden;">
     <ul class="nav nav-tabs tabs-left" style="min-height: 100%;">
-	    <div class="chooser-label"><strong>ONLY ME</strong> / ALL TEAM <span class="pull-right">MOST RECENT <i class="fa fa-caret-down" aria-hidden="true"></i></span></div>
+	    <div class="chooser-label"><strong>LATEST SNIPPETS</strong></div>
 	    <?php
 		    $i = 0;
 			while ($row_snippets = mysqli_fetch_array($snippets, MYSQLI_ASSOC)) {
