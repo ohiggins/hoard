@@ -30,7 +30,7 @@ include('app/process/search_process.php');
 
 
 
-<div class="col-xs-3" style="padding: 0;">
+<div class="col-xs-3 snippet-chooser" style="padding: 0;">
 	<div class="chooser" style="height: calc(100vh - 135px); overflow-x: hidden;">
     <ul class="nav nav-tabs tabs-left" style="min-height: 100%;">
 	    <div class="chooser-label">
@@ -50,8 +50,27 @@ if(mysqli_num_rows($snippets) != 0) {
 		$author = new User();
 		$author->set_id($snippet->get_author());
 ?>
-				<li  <?php if ($i == 0) { echo 'class="active"'; } ?> onclick='getSummary(<?php echo $snippet->get_id(); ?>)'>
+				<li  class='desktop-chooser<?php if ($i == 0) { echo ' active'; } ?>' onclick='getSummary(<?php echo $snippet->get_id(); ?>)'>
 					<a href="#snippet-<?php echo $snippet->get_id(); ?>" data-toggle="tab">
+						<img src="<?php echo $author->get_gravatar(); ?>" class="avatar">
+						<span class="title"><?php echo $snippet->get_title(); ?></span><br />
+						<span class="meta">Posted <?php echo $snippet->get_date(); ?> by <?php echo $author->get_name(); ?></span>
+									    <div class="chooser-labels">
+				    <?php
+		foreach($snippet->get_labels() as $labels) {
+			$label = new Label();
+			$labelid = $labels['label_id'];
+			$label->set_id($labelid);
+			echo '<span style="background-color: ' . $label->get_hex() . '">' . $label->get_name() . '</span>';
+		}
+?>
+			    </div>
+
+					</a>
+				</li>
+				
+				<li class='mobile-chooser'>
+					<a href="/snippet.php?id=<?php echo $snippet->get_id(); ?>">
 						<img src="<?php echo $author->get_gravatar(); ?>" class="avatar">
 						<span class="title"><?php echo $snippet->get_title(); ?></span><br />
 						<span class="meta">Posted <?php echo $snippet->get_date(); ?> by <?php echo $author->get_name(); ?></span>
