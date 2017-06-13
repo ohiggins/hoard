@@ -21,10 +21,6 @@ $snippet->set_id($id);
 if($snippet->get_author() != $user->get_id() && !$user->is_admin()) {
 	die('Permission denied');	
 }
-
-// Connect to database and insert entry
-require_once('config.php');
-
 $snippet_id = $snippet->get_id();
 
 $delete_snippet = $mysqli->query("DELETE FROM snippets WHERE snippet_id = $snippet_id");
@@ -33,7 +29,7 @@ if (!$delete_snippet) {
 }
 
 // Redirect back to snippet page with success message
-header('Location: ../index.php?delete_success');
+header('Location: ../../index.php?delete_success');
 
 ?>
 

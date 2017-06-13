@@ -149,7 +149,7 @@
 
 
 .scrolly {
-	height: calc(100vh - 135px);
+	height: calc(100vh - 105px);
 	position: relative;
 }
 
@@ -254,4 +254,26 @@ ul.sidebar-menu li.button a {
 	text-align: center;
 	font-size: 14px;
 	padding: 8px;
+}
+
+li.mobile-chooser {
+	display: none;
+}
+
+@media screen and (max-width: 1000px) {
+	.snippet-viewer {
+		display: none;
+	}
+	
+	.snippet-chooser {
+		width: 100%;
+	}
+	
+	li.desktop-chooser {
+		display: none;
+	}
+	
+	li.mobile-chooser {
+		display: block;
+	}
 }

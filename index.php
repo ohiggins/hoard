@@ -26,8 +26,8 @@ $snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author =
 ?>
 
 
-<div class="col-xs-3" style="padding: 0;">
-	<div class="chooser" style="height: calc(100vh - 135px); overflow-x: hidden;">
+<div class="col-xs-3 snippet-chooser" style="padding: 0;">
+	<div class="chooser" style="height: calc(100vh - 100px); overflow-x: hidden;">
     <ul class="nav nav-tabs tabs-left" style="min-height: 100%;">
 	    <div class="chooser-label"><strong>LATEST SNIPPETS</strong></div>
 	    <?php
@@ -38,12 +38,32 @@ $snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author =
 				$author2 = new User();
 				$author2->set_id($snippet->get_author()); 
 		?>
-				<li  <?php if ($i == 0) { echo 'class="active"'; } ?> onclick='getSummary(<?php echo $snippet->get_id(); ?>)'>
+				<li  class='<?php if ($i == 0) { echo 'active'; } ?> desktop-chooser' onclick='getSummary(<?php echo $snippet->get_id(); ?>)'>
 					<a href="#snippet-<?php echo $snippet->get_id(); ?>" data-toggle="tab">
 						<img src="<?php echo $author2->get_gravatar(); ?>" class="avatar">
 						<span class="title"><?php echo $snippet->get_title(); ?></span><br /> 
 						<span class="meta">Posted <?php echo $snippet->get_pretty_date('F j, Y', $user->get_timezone()); ?> by <?php echo $author2->get_name(); ?></span>
-									    <div class="chooser-labels">
+				<div class="chooser-labels">
+				    <?php 
+						foreach($snippet->get_labels() as $labels) { 
+							$label = new Label();
+							$labelid = $labels['label_id'];
+							$label->set_id($labelid);
+							echo '<span style="background-color: ' . $label->get_hex() . '">' . $label->get_name() . '</span>';
+						}
+					?>
+			    </div>
+						 
+					</a>
+				</li>
+				
+				
+				<li class='mobile-chooser'>
+					<a href="/snippet.php?id=<?php echo $snippet->get_id(); ?>">
+						<img src="<?php echo $author2->get_gravatar(); ?>" class="avatar">
+						<span class="title"><?php echo $snippet->get_title(); ?></span><br /> 
+						<span class="meta">Posted <?php echo $snippet->get_pretty_date('F j, Y', $user->get_timezone()); ?> by <?php echo $author2->get_name(); ?></span>
+				<div class="chooser-labels">
 				    <?php 
 						foreach($snippet->get_labels() as $labels) { 
 							$label = new Label();
@@ -65,7 +85,7 @@ $snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author =
 </div>
 </div>
 
-<div class="col-xs-9">
+<div class="col-xs-9 snippet-viewer">
     <div class="tab-content scrolly">
 		<div class="test"></div>
     </div>

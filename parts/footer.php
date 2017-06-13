@@ -2,13 +2,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> PRE-ALPHA
-    </div>
-    <strong>Powered by <a href="https://github.com/xadz/hoard">Hoard</a></strong>
-  </footer>
-
   </div>
 <!-- ./wrapper -->
 
@@ -45,7 +38,8 @@
 <script src="/assets/vendor/plugins/fastclick/fastclick.min.js"></script>
 <script src="/assets/vendor/plugins/select2/select2.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/assets/js/app.min.js"></script>
+<script src="/assets/js/adminlte.min.js"></script>
+<script src="/assets/js/app.js"></script>
 
 <script src="/assets/vendor/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script>
