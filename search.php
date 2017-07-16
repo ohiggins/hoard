@@ -31,7 +31,7 @@ include('app/process/search_process.php');
 
 
 <div class="col-xs-3 snippet-chooser" style="padding: 0;">
-	<div class="chooser" style="height: calc(100vh - 135px); overflow-x: hidden;">
+	<div class="chooser" style="height: calc(100vh - 100px); overflow-x: hidden;">
     <ul class="nav nav-tabs tabs-left" style="min-height: 100%;">
 	    <div class="chooser-label">
 		    <strong><?php if(mysqli_num_rows($snippets) > 0) { echo mysqli_num_rows($snippets); } else { echo '0'; } ?></strong>  RESULTS  

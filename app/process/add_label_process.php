@@ -22,9 +22,6 @@ if (!isset($_POST['colour']) || trim($_POST['colour']) == '') {
 	die('Oops! You forgot to pick a colour.');
 }
 
-// Connect to database and insert entry
-require_once('db.php');
-
 $new_label_title = "'".$mysqli->escape_string(trim($_POST['title']))."'";
 $new_label_colour = "'".$mysqli->escape_string(trim($_POST['colour']))."'";
 
@@ -34,7 +31,7 @@ if (!$new_entry) {
 }
 
 // Redirect back to dashboard with success message
-header('Location: /index.php?label_success');
+header('Location: /labels.php?add_success');
 
 ?>
 

@@ -110,7 +110,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="team.php"><i class="fa fa-users"></i> <span>Team</span></a></li>
-        <li class="header">LABELS<div class="pull-right"><a href="add_label.php"><i class="fa fa-plus" aria-hidden="true"></i></a></div></li>
+        <li class="header">LABELS<div class="pull-right"><a href="labels.php"><i class="fa fa-plus" aria-hidden="true"></i></a></div></li>
         <li><a href="search.php?q=<3"><i class="fa fa-heart text-red"></i> <span>Favourites</span></a></li>
         <?php 
 	    	$labels = mysqli_query($mysqli, "SELECT * FROM labels ORDER BY label_name");
