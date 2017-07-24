@@ -1,4 +1,4 @@
-<img src="https://adamgreenough.com/themes/adam/assets/hoard/logo-colour-trim.svg" align="right" width="200px">
+<img src="https://adamgreenough.com/themes/adam/assets/hoard/github-logo.svg" align="right" width="200px">
 
 # Hoard
 
@@ -10,6 +10,8 @@ Hoard is a code snippet manager built in PHP. It is designed for teams, but coul
 
 > **Latest Release**  
 > Coming Soon [**(View)**](https://github.com/xadz/hoard/releases)
+>
+> <img src="https://img.shields.io/github/downloads/xadz/hoard/total.svg?colorB=FFB846&maxAge=30">
 
   <br />
 
@@ -35,7 +37,7 @@ Check out the [**wiki**](https://github.com/xadz/hoard/wiki/Install) for minimum
 
   <br />
 
-## Contributing  
+## Contributing &nbsp; <img src="https://img.shields.io/github/issues/xadz/hoard.svg?colorB=FFB846&maxAge=30">
 
 Help wanted! Check out the [**issues**](https://github.com/xadz/hoard/issues) for current assignments.
 
