@@ -17,7 +17,7 @@ Hoard is a code snippet manager built in PHP. It is designed for teams, but coul
 
 Hoard features a number of useful features to make your development easier.
 
-- **Access anywhere with the friendly responsive UI**
+- **Access anywhere with the easy to use responsive UI**
 - **Support for over 110 syntax highlighted languages with Cloud9's Ace Editor**
 - **Multiple code entries per snippet**
 - **Choose to keep your code private, collaborate with your team or share a public link**
@@ -41,4 +41,4 @@ Help wanted! Check out the [**issues**](https://github.com/xadz/hoard/issues) fo
 
   <br />
 
-###### &copy; Adam Greenough 2017. Released under the GNU General Public License v3.0.
+###### &copy; Adam Greenough 2017. Source code released under the GNU General Public License v3.0 unless otherwise noted.

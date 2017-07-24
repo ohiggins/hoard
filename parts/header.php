@@ -28,6 +28,7 @@
   <![endif]-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.16/js/perfect-scrollbar.jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.16/css/perfect-scrollbar.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Dosis:500|Open+Sans:400,700" rel="stylesheet">
 </head>
 <body class="hold-transition skin-yellow sidebar-mini">
 <div class="wrapper">
@@ -36,9 +37,9 @@
     <!-- Logo -->
     <a href="<?php echo $baseurl ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><img src="/assets/img/logo.png"></span>
+      <span class="logo-lg">hoard</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

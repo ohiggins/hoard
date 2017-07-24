@@ -25,15 +25,15 @@
 	margin-right: 10px;
 }
 
-.logo-lg {
-	text-align: left;
+
+.main-header .logo {
+    font-size: 32px;
+    padding: 0;
+    font-weight: 300;
+    font-family: 'Dosis', sans-serif;
+    background: url('../img/icon-head.svg') center left no-repeat;
 }
 
-.logo-lg img {
-	height: 30px;
-	margin-top: -3px;
-	text-align: left;
-}
 
 .entry-header {
 	background: #1e282c;
@@ -239,6 +239,7 @@ border-color: #ddd !important;
 	margin: 100px auto;
 		opacity: 0.1;
 }
+
 
 .noresults img {
 	width: 75px;
