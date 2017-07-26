@@ -1,7 +1,6 @@
 <?php
 
-class Model
-{
+class Model {
     public $mysqli;
      
     public function __construct() {

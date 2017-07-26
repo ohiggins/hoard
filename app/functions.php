@@ -8,6 +8,7 @@
 ********************************/	
 
 // Get contents between 2 strings, used to parse search
+
 function get_between($content, $start, $end){
     $r = explode($start, $content);
     if (isset($r[1])) {

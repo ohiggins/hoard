@@ -106,7 +106,8 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 			if (!$has_flood_control_limit) {
 				$insert_flood_control = $mysqli->query("INSERT INTO login_flood_control (ipaddr, attempts, tsc) VALUES ($attempt_ip_db, 1, UNIX_TIMESTAMP())");
 			}
-			die('Your password was incorrect, please try again.');
+					header('Location: login.php?failed');
+					die();
 		} else {
 			// password checked out, clear flood control, if there was any
 			if ($has_flood_control_limit) {
@@ -140,12 +141,13 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 		if (!$has_flood_control_limit) {
 			$insert_flood_control = $mysqli->query("INSERT INTO login_flood_control (ipaddr, attempts, tsc) VALUES ($attempt_ip_db, 1, UNIX_TIMESTAMP())");
 		}
-		die('Could not find that email address, sorry. Try again, I guess.');
+		header('Location: login.php?failed');
+		die();
 	}
 				
 } else if (isset($login_required) && $login_required == true) {
 	
-	header('Location: login.php?forbidden');
+	header('Location: login.php');
 	die();
 	
 }
