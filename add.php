@@ -29,7 +29,7 @@
 						<h3 class="box-title">Snippet Details</h3>
 					</div>
 				<div class="box-body">
-					<input tabindex="1" id="start-here" name="snuppet_title" type="text" placeholder="Snippet Title" class="form-control input-lg" /><p><label>Snippet Description:</label> <textarea name="description" type="text"></textarea></p>
+					<input tabindex="1" id="start-here" name="snippet_title" type="text" placeholder="Snippet Title" class="form-control input-lg" /><p><label>Snippet Description:</label> <textarea name="snippet_description" type="text"></textarea></p>
 <p><label>Snippet Visibility:</label>
 	<select class="form-content" style="width: 100%;" name="visibility" tabindex="-1" aria-hidden="true">
                   <option value="0" selected="selected">Only Me</option>
@@ -99,7 +99,7 @@
 							$(".langpicker").select2();
 						});
 					</script>
-					<select name="language" size="1" id="mode" class="langpicker form-control">
+					<select name="entry_language" size="1" id="mode" class="langpicker form-control">
 						<option hidden="" disabled="disabled" selected="selected" value="">Please choose a language...</option>
 						<option value="abap">ABAP</option>
 						<option value="abc">ABC</option>

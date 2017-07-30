@@ -32,9 +32,6 @@ if (!isset($_POST['entry']) || trim($_POST['entry']) == '') {
 	die('you forgot to put in an entry');
 }
 
-// Connect to database and insert entry
-require_once('config.php');
-
 $new_entry_snippet = "'".$mysqli->escape_string(trim($_POST['snippet']))."'";
 $new_entry_content = "'".$mysqli->escape_string(trim($_POST['entry']))."'";
 $new_entry_title = "'".$mysqli->escape_string(trim($_POST['title']))."'";
@@ -46,7 +43,7 @@ if (!$new_entry) {
 }
 
 // Redirect back to snippet page with success message
-header('Location: ../snippet.php?id=' . trim($_POST['snippet']) . '&entry_success');
+header('Location: ../../snippet.php?id=' . trim($_POST['snippet']) . '&entry_success');
 
 ?>
 
