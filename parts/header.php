@@ -73,7 +73,7 @@
                   <a href="<?php echo $baseurl ?>/profile.php?id=<?php echo $user->get_id(); ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo $baseurl ?>/logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo $baseurl ?>/app/logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

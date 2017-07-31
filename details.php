@@ -68,7 +68,7 @@ if($snippet->get_author() == $user->get_id() OR $user->is_admin()) {
 					</script>
                 
              <p><label>Snippet Labels:</label>
-	             <?php include('app/db.php');
+	             <?php 
 							$labels = mysqli_query($mysqli, "SELECT * FROM labels ORDER BY label_name");
 							if ($labels AND $labels->num_rows !== 0) { ?>
 	             <select name="labelpicker[]" size="1" id="labels" class="labelpicker form-control" multiple>

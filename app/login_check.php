@@ -88,7 +88,7 @@ if (isset($_COOKIE['hoard_session']) && trim($_COOKIE['hoard_session']) != '') {
 			$has_flood_control_limit = false;
 		} else {
 			$update_flood_control = $mysqli->query('UPDATE login_flood_control SET attempts=attempts+1 WHERE id='.$flood_control_info['id']);
-			if ($flood_control_info['attempts'] > 20) {
+			if ($flood_control_info['attempts'] > 10) {
 				die('Sorry, you have tried to log in unsuccessfully way too many times. Please try again in a half hour or so.');
 			}
 		}
