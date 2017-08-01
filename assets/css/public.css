@@ -7,7 +7,7 @@ body {
 	width: 100%;
 	margin-bottom: 30px;
 	padding-bottom: 20px;
-	border-radius: 0px 0px 3px 3px;
+	border-radius: 0 0 3px 3px;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
@@ -43,7 +43,7 @@ body {
 .wrapper {
 	max-width: 1200px;
 	margin: auto;
-	padding: 0px 20px;
+	padding: 0 20px;
 }
 
 .sub {

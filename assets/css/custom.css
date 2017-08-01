@@ -12,7 +12,7 @@
 	width: 100%;
 	margin-bottom: 30px;
 	padding-bottom: 20px;
-	border-radius: 0px 0px 3px 3px;
+	border-radius: 0 0 3px 3px;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
@@ -34,6 +34,9 @@
     background: url('../img/icon-head.svg') center left no-repeat;
 }
 
+.padding-20 {
+	padding: 20px;
+}
 
 .entry-header {
 	background: #1e282c;
@@ -72,7 +75,7 @@
 }
 
 .main-header .navbar { 
-	padding: 0px 10px;
+	padding: 0 10px;
 }
 
 .content-header>.breadcrumb {
@@ -90,7 +93,7 @@
 
 .select2-selection__choice {
 	padding: 3px 10px !important;
-	text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+	text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
 	
 }
 
@@ -110,7 +113,7 @@
 	border-radius: 3px;
 	padding: 4px 10px;
 	color: #fff;
-	text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+	text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
 	font-size: 13px;
 }
 
@@ -156,7 +159,7 @@
 .chooser {
 	background: #fff;
 	position: relative;
-	padding: 0px;
+	padding: 0;
 }
 
 .chooser-label {
@@ -183,7 +186,7 @@ border-color: #ddd !important;
 	border-right: solid 1px #ddd !important;
 	border-bottom: solid 1px #ddd !important;
 	border-top: solid 1px #ddd !important;
-	border-radius: 0px;
+	border-radius: 0;
 	background: #f7f7f7;
 	color: #1a2226;
 }
@@ -199,7 +202,7 @@ border-color: #ddd !important;
 }
 
 .chooser-labels {
-	margin: 5px 0px 10px 0px;
+	margin: 5px 0 10px 0;
 }
 
 .chooser-labels span {
@@ -222,7 +225,7 @@ border-color: #ddd !important;
 	border-radius: 2px;
 	padding: 3px 6px;
 	color: #fff;
-	text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+	text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
 	font-size: 10px;
 }
 
@@ -252,7 +255,7 @@ border-color: #ddd !important;
 }
 
 ul.sidebar-menu li.button {
-	padding: 0px 10px 10px 10px;
+	padding: 0 10px 10px 10px;
 }
 
 ul.sidebar-menu li.button a {
@@ -269,7 +272,7 @@ li.mobile-chooser {
 
 
 .no-pad {
-	padding: 0px !important;
+	padding: 0 !important;
 }
 
 
@@ -295,7 +298,7 @@ li.mobile-chooser {
 
 
 .snippet-title {
-	margin-top: 0px;
+	margin-top: 0;
 	font-size: 28px;
 }
 
@@ -318,7 +321,7 @@ li.mobile-chooser {
 .snippet-viewer {
 	width: calc(100% - 325px);
 	float: right;
-	padding: 0px;
+	padding: 0;
 }
 
 .snippet-container {

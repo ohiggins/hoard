@@ -5,15 +5,13 @@ require_once(__DIR__ . '/app/functions.php');
 require_once(__DIR__ . '/app/classes/model.php'); 
 require_once(__DIR__ . '/app/classes/core.php'); 
 require_once(__DIR__ . '/app/classes/user.php'); 
-require_once(__DIR__ . '/app/classes/label.php'); 
-require_once(__DIR__ . '/app/classes/search.php'); 
 require_once(__DIR__ . '/app/classes/snippet.php'); 
 require_once(__DIR__ . '/app/classes/entry.php'); 
 	
-if(!empty($_GET["id"])) {
+if(!empty($_GET["id"]) and is_numeric($_GET["id"])) {
 	$id = htmlspecialchars($_GET["id"]);
 } else {
-	$id = false;
+	$id = null;
 }
 
 $core = new Core();
@@ -33,7 +31,11 @@ $author->set_id($authorid);
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<title><?php echo $snippet->get_title(); ?> — <?php echo $core->company_name(); ?></title>
+	<?php if($id and $snippet->get_title() and $snippet->get_visibility() == 2) { ?>
+		<title><?php echo $snippet->get_title(); ?> — <?php echo $core->company_name(); ?></title>
+	<?php } else { ?>
+		<title>Snippet not found!</title>
+	<?php } ?>
 	
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
@@ -63,7 +65,7 @@ $author->set_id($authorid);
 
 	<?php 
 		// Check we've set an ID in the URL, the snippet exists and that it has a visibility of Public
-		if($id and $snippet->get_title() and $snippet->get_visibility() == 2) {		
+		if ($id and $snippet->get_title() and $snippet->get_visibility() == 2) {		
 	?>
 
 	<div class="sub">
@@ -147,7 +149,7 @@ $author->set_id($authorid);
 		<div class="wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="error">This snippet may have been hidden or deleted. Sorry about that.</div>				
+					<div class="error">This snippet may have been hidden or deleted. Maybe it never even existed. Sorry about that.</div>				
 				</div>
 			</div>
 		</div>

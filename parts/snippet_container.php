@@ -122,7 +122,7 @@ $author->set_id($authorid);
             <ul class="nav nav-tabs">
               <li class="active"><a href="#tab_1" data-toggle="tab">Details</a></li>
               <!-- <li><a href="#tab_2" data-toggle="tab">Comments</a></li> -->
-              <li><a href="#tab_3" data-toggle="tab">Share</a></li>
+              <?php if($snippet->get_visibility() == 2) { ?><li><a href="#tab_3" data-toggle="tab">Share</a></li><?php } ?>
             </ul>
             <div class="tab-content no-pad">
               <div class="tab-pane active" id="tab_1">
@@ -188,10 +188,11 @@ $author->set_id($authorid);
             </div>
               </div> -->
               <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_3">
-			  	Share details here
+              <?php if($snippet->get_visibility() == 2) { ?>
+              <div class="tab-pane padding-20" id="tab_3">
+                <input type="text" class="form-control" value="<?php echo $baseurl . '/public/' . $snippet->get_id(); ?>" readonly="readonly">
               </div>
-              <!-- /.tab-pane -->
+              <?php } ?>
             </div>
             <!-- /.tab-content -->
           </div>
