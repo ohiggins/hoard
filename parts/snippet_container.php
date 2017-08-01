@@ -121,7 +121,7 @@ $author->set_id($authorid);
 		<div class="nav-tabs-custom snippet-details">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#tab_1" data-toggle="tab">Details</a></li>
-              <li><a href="#tab_2" data-toggle="tab">Comments</a></li>
+              <!-- <li><a href="#tab_2" data-toggle="tab">Comments</a></li> -->
               <li><a href="#tab_3" data-toggle="tab">Share</a></li>
             </ul>
             <div class="tab-content no-pad">
@@ -137,49 +137,45 @@ $author->set_id($authorid);
                   <td><?php if($snippet->get_visibility() == 0) { echo '<i class="fa fa-eye" aria-hidden="true"></i> Only Me'; } else if($snippet->get_visibility() == 1) { echo '<i class="fa fa-users"></i> Shared with Team'; } elseif($snippet->get_visibility() == 2) { echo '<i class="fa fa-globe"></i> Public'; } ?></td>
                 </tr>
                 <tr>
-                  <td><a href="/snippet.php?id=<?php echo $snippet->get_id(); ?>"><i class="fa fa-link" aria-hidden="true"></i> Permalink</a></td>
+                  <td><a href="/snippet/<?php echo $snippet->get_id(); ?>"><i class="fa fa-link" aria-hidden="true"></i> Permalink</a></td>
                 </tr>
               </tbody></table>
 			  	
 
               </div>
               <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_2">
+              <!-- <div class="tab-pane" id="tab_2">
 <div class="box-body">
-              <!-- Conversations are loaded here -->
-                <!-- Message. Default to the left -->
+      
                 <div class="direct-chat-msg">
                   <div class="direct-chat-info clearfix">
                     <span class="direct-chat-name pull-left">Alexander Pierce</span>
                     <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
                   </div>
-                  <!-- /.direct-chat-info -->
-                  <img class="direct-chat-img" src="https://www.gravatar.com/avatar/8e100ea62d285d678710b9b2a045b547?d=mm" alt="Message User Image"><!-- /.direct-chat-img -->
+           
+                  <img class="direct-chat-img" src="https://www.gravatar.com/avatar/8e100ea62d285d678710b9b2a045b547?d=mm" alt="Message User Image">
                   <div class="direct-chat-text">
                     Is this template really for free? That's unbelievable!
                   </div>
-                  <!-- /.direct-chat-text -->
+                
                 </div>
-                <!-- /.direct-chat-msg -->
+             
 
-                <!-- Message to the right -->
                 <div class="direct-chat-msg right">
                   <div class="direct-chat-info clearfix">
                     <span class="direct-chat-name pull-right">Sarah Bullock</span>
                     <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
                   </div>
-                  <!-- /.direct-chat-info -->
-                  <img class="direct-chat-img" src="https://www.gravatar.com/avatar/8e100ea62d285d678710b9b2a045b547?d=mm" alt="Message User Image"><!-- /.direct-chat-img -->
+    
+                  <img class="direct-chat-img" src="https://www.gravatar.com/avatar/8e100ea62d285d678710b9b2a045b547?d=mm" alt="Message User Image">
                   <div class="direct-chat-text">
                     You better believe it!
                   </div>
-                  <!-- /.direct-chat-text -->
-                </div>
-                <!-- /.direct-chat-msg -->
-              </div>
-              <!--/.direct-chat-messages-->
 
-              <!-- /.direct-chat-pane -->
+                </div>
+
+              </div>
+
             <div class="box-footer">
               <form action="#" method="post">
                 <div class="input-group">
@@ -190,7 +186,7 @@ $author->set_id($authorid);
                 </div>
               </form>
             </div>
-              </div>
+              </div> -->
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_3">
 			  	Share details here

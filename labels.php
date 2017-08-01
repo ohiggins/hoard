@@ -7,7 +7,7 @@
 
 ?>
 
-<link rel="stylesheet" href="assets/plugins/colorpicker/bootstrap-colorpicker.min.css">
+<link rel="stylesheet" href="assets/vendor/plugins/colorpicker/bootstrap-colorpicker.min.css">
 
 
   <!-- Content Wrapper. Contains page content -->

@@ -10,7 +10,7 @@
 
 .ace_editor {
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	padding-bottom: 20px;
 	border-radius: 0px 0px 3px 3px;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
@@ -200,6 +200,11 @@ border-color: #ddd !important;
 
 .chooser-labels {
 	margin: 5px 0px 10px 0px;
+}
+
+.chooser-labels span {
+	white-space: nowrap;
+	display: inline-block;
 }
 
 .chooser .avatar {

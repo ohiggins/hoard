@@ -10,9 +10,6 @@
 <div class="content-wrapper">
 	<section class="content-header" style="background: red; height: 50px;">
 		<h1>Your Account</h1>
-		<ol class="breadcrumb">
-			<li><i class="fa fa-user"></i> Edit Account Details</li>
-		</ol>
 	</section>
 	
 	

@@ -15,8 +15,8 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="assets/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="/assets/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
   <script src="/assets/vendor/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <!-- jQuery 2.2.3 -->
 	<script src="/assets/vendor/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -70,10 +70,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo $baseurl ?>/profile.php?id=<?php echo $user->get_id(); ?>" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo $baseurl ?>/account.php" class="btn btn-default btn-flat">My Account</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo $baseurl ?>/app/logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo $baseurl ?>/app/logout.php" class="btn btn-default btn-flat">Sign Out</a>
                 </div>
               </li>
             </ul>
@@ -94,7 +94,7 @@
 
     <section class="sidebar">
 
-      <form action="search.php" method="get" class="sidebar-form">
+      <form action="/search.php" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
@@ -109,8 +109,8 @@
       <ul class="sidebar-menu">
 	    <li class="button"><a href="<?php echo $baseurl ?>/add.php" class="btn-sm btn-block btn-warning">New Snippet</a></li>
         <li class="header">MAIN NAVIGATION</li>
-        <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="team.php"><i class="fa fa-users"></i> <span>Team</span></a></li>
+        <li><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="/team"><i class="fa fa-users"></i> <span>Team</span></a></li>
         <li class="header">LABELS<div class="pull-right"><a href="labels.php"><i class="fa fa-pencil" aria-hidden="true"></i></a></div></li>
         <li><a href="search.php?q=<3"><i class="fa fa-heart text-red"></i> <span>Favourites</span></a></li>
         <?php 
@@ -119,7 +119,7 @@
 			$label = new Label();
 			$label->set_id($row_labels['label_id']);
 	    ?>
-        <?php if($label->is_visible($user->get_id())) { ?><li><a href="search.php?q=%23<?php echo str_replace(' ', '_', $label->get_name()); ?>"><i class="fa fa-circle" aria-hidden="true" style="color: <?php echo $label->get_hex(); ?>;"></i> <span><?php echo $label->get_name(); ?></span></a></li><?php } ?>
+        <?php if($label->is_visible($user->get_id())) { ?><li><a href="/search/%23<?php echo str_replace(' ', '_', $label->get_name()); ?>"><i class="fa fa-circle" aria-hidden="true" style="color: <?php echo $label->get_hex(); ?>;"></i> <span><?php echo $label->get_name(); ?></span></a></li><?php } ?>
         <?php 
 	        }
 	    ?>
