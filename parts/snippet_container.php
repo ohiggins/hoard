@@ -24,20 +24,10 @@ $authorid = $snippet->get_author();
 $author->set_id($authorid);
 
 ?>
+<div class="snippet-container">
 
-<div class="stretch-container">
-		<div class="row">
-			<div class="col-lg-12">
-
-	<?php
-		if($id and $snippet->get_title()) {
-	?>
-
-			</div>
-
-			<div class="col-lg-8">
-					
-			    <h2><?php echo $snippet->get_title(); ?></h2>
+	
+				<h1 class="snippet-title"><?php echo $snippet->get_title(); ?></h1>
 			    <p><?php echo $snippet->get_description(); ?></p>
 			    <div class="snippet-labels">
 				    <?php 
@@ -49,7 +39,14 @@ $author->set_id($authorid);
 						}
 					?>
 			    </div>
-			    <hr>
+
+	<?php
+		if($id and $snippet->get_title()) {
+	?>
+
+
+			<div class="snippet-main">
+				
 	
 				<?php
 				$row_entries = mysqli_query($mysqli, "SELECT * FROM snippets_entries WHERE snippet_id = '$id'");
@@ -73,6 +70,11 @@ $author->set_id($authorid);
 				    var editor = ace.edit("editor-" + "<?php echo $entry->get_id(); ?>");
 				    editor.setTheme("ace/theme/hoard");
 				    editor.getSession().setMode("ace/mode/<?php echo $entry->get_language(); ?>");
+				    editor.renderer.setScrollMargin(0, 20);
+				    editor.setOptions({
+						minLines: 20,
+					    maxLines: 100
+					});;
 				</script>
 						
 				<?php 
@@ -86,38 +88,48 @@ $author->set_id($authorid);
 	
 			</div>
 
-			<div class="col-lg-4">
-				<div class="box box-widget widget-user-2">
-					<div class="widget-user-header bg-yellow">
-						<div class="widget-user-image">
-							<img class="img-circle" src="<?php echo $author->get_gravatar(); ?>" alt="User Avatar">
-            			</div>
-						<h3 class="widget-user-username"><?php echo $author->get_name(); ?></h3>
-						<h5 class="widget-user-desc">Lead Developer</h5>
-            		</div>
-            		
-					<div class="box-footer no-padding">
-						<ul class="nav nav-stacked">
-							<li><a href="/details.php?id=<?php echo $snippet->get_id(); ?>">Edit Snippet</a></li>
-							<li><a href="/entry.php?id=<?php echo $snippet->get_id(); ?>">Add Entry</a></li>
-						</ul>
-            		</div>
-        		</div>
-        		
-        		<div class="box box-warning">
-            <div class="box-header with-border">
-              <h3 class="box-title">Collapsable</h3>
+			<div class="snippet-sidebar">
+				
 
-              <div class="box-tools pull-right">
+
+
+
+<div class="box box-solid box-warning box-edit">
+            <div class="box-header with-border">
+              <h3 class="box-title">Edit</h3>
+
+              <div class="box-tools">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
               </div>
-              <!-- /.box-tools -->
             </div>
-            <!-- /.box-header -->
-<div class="box-body no-padding">
-              <table class="table table-striped">
-                <tbody>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="/details.php?id=<?php echo $snippet->get_id(); ?>"><i class="fa fa-pencil-square-o"></i> Edit Snippet Details</a></li>
+                <li><a href="/entry.php?id=<?php echo $snippet->get_id(); ?>"><i class="fa fa-plus-square"></i> Add Code Entry</a></li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+
+
+
+				
+				<br />
+				
+		<div class="nav-tabs-custom snippet-details">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab_1" data-toggle="tab">Details</a></li>
+              <li><a href="#tab_2" data-toggle="tab">Comments</a></li>
+              <li><a href="#tab_3" data-toggle="tab">Share</a></li>
+            </ul>
+            <div class="tab-content no-pad">
+              <div class="tab-pane active" id="tab_1">
+
+			  	
+			  	<table class="table table-striped">
+                <tbody><tr>
                 <tr>
                   <td><i class="fa fa-calendar" aria-hidden="true"></i> Posted <?php echo $snippet->get_pretty_date('F j, Y (H:i)', $user->get_timezone()); ?></td>
                 </tr>
@@ -128,28 +140,75 @@ $author->set_id($authorid);
                   <td><a href="/snippet.php?id=<?php echo $snippet->get_id(); ?>"><i class="fa fa-link" aria-hidden="true"></i> Permalink</a></td>
                 </tr>
               </tbody></table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-   			
-			
-			<div class="box box-danger collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Admin Tools</h3>
+			  	
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                </button>
               </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+<div class="box-body">
+              <!-- Conversations are loaded here -->
+                <!-- Message. Default to the left -->
+                <div class="direct-chat-msg">
+                  <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                  </div>
+                  <!-- /.direct-chat-info -->
+                  <img class="direct-chat-img" src="https://www.gravatar.com/avatar/8e100ea62d285d678710b9b2a045b547?d=mm" alt="Message User Image"><!-- /.direct-chat-img -->
+                  <div class="direct-chat-text">
+                    Is this template really for free? That's unbelievable!
+                  </div>
+                  <!-- /.direct-chat-text -->
+                </div>
+                <!-- /.direct-chat-msg -->
+
+                <!-- Message to the right -->
+                <div class="direct-chat-msg right">
+                  <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                  </div>
+                  <!-- /.direct-chat-info -->
+                  <img class="direct-chat-img" src="https://www.gravatar.com/avatar/8e100ea62d285d678710b9b2a045b547?d=mm" alt="Message User Image"><!-- /.direct-chat-img -->
+                  <div class="direct-chat-text">
+                    You better believe it!
+                  </div>
+                  <!-- /.direct-chat-text -->
+                </div>
+                <!-- /.direct-chat-msg -->
+              </div>
+              <!--/.direct-chat-messages-->
+
+              <!-- /.direct-chat-pane -->
+            <div class="box-footer">
+              <form action="#" method="post">
+                <div class="input-group">
+                  <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                      <span class="input-group-btn">
+                        <button type="submit" class="btn btn-warning btn-flat">Send</button>
+                      </span>
+                </div>
+              </form>
             </div>
-            <!-- /.box-header -->
-            <div class="box-footer no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="#">Edit Snippet</a></li>
-              </ul>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_3">
+			  	Share details here
+              </div>
+              <!-- /.tab-pane -->
             </div>
-            <!-- /.footer -->
+            <!-- /.tab-content -->
           </div>
+				
+				
+				
+				
+				
+
+	
+          			
+			
+
 			
 			</div>
 		</div>

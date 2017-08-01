@@ -30,7 +30,7 @@ include('app/process/search_process.php');
 
 
 
-<div class="col-xs-3 snippet-chooser" style="padding: 0;">
+<div class="snippet-chooser" style="padding: 0;">
 	<div class="chooser" style="height: calc(100vh - 100px); overflow-x: hidden;">
     <ul class="nav nav-tabs tabs-left" style="min-height: 100%;">
 	    <div class="chooser-label">
@@ -54,7 +54,7 @@ if(mysqli_num_rows($snippets) != 0) {
 					<a href="#snippet-<?php echo $snippet->get_id(); ?>" data-toggle="tab">
 						<img src="<?php echo $author->get_gravatar(); ?>" class="avatar">
 						<span class="title"><?php echo $snippet->get_title(); ?></span><br />
-						<span class="meta">Posted <?php echo $snippet->get_date(); ?> by <?php echo $author->get_name(); ?></span>
+						<span class="meta">Posted <?php echo $snippet->get_pretty_date('F j, Y', $user->get_timezone()); ?> by <?php echo $author->get_name(); ?></span>
 									    <div class="chooser-labels">
 				    <?php
 		foreach($snippet->get_labels() as $labels) {
@@ -102,7 +102,7 @@ if(mysqli_num_rows($snippets) != 0) {
 </div>
 </div>
 
-<div class="col-xs-9">
+<div class="snippet-viewer">
     <div class="tab-content scrolly">
 		<div class="test"></div>
     </div>
