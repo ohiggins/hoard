@@ -70,17 +70,17 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo $baseurl ?>/account.php" class="btn btn-default btn-flat">My Account</a>
+                  <a href="<?php echo $baseurl ?>/account" class="btn btn-default btn-flat">My Account</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo $baseurl ?>/app/logout.php" class="btn btn-default btn-flat">Sign Out</a>
+                  <a href="<?php echo $baseurl ?>/app/logout" class="btn btn-default btn-flat">Sign Out</a>
                 </div>
               </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="admin.php"><i class="fa fa-gears"></i></a>
+            <a href="/admin"><i class="fa fa-gears"></i></a>
           </li>
           <li>
             <a href="#" data-toggle="modal" data-target="#about"><i class="fa fa-info"></i></a>
@@ -94,7 +94,7 @@
 
     <section class="sidebar">
 
-      <form action="/search.php" method="get" class="sidebar-form">
+      <form action="/search" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
@@ -107,11 +107,11 @@
 
       
       <ul class="sidebar-menu">
-	    <li class="button"><a href="<?php echo $baseurl ?>/add.php" class="btn-sm btn-block btn-warning">New Snippet</a></li>
+	    <li class="button"><a href="<?php echo $baseurl ?>/add" class="btn-sm btn-block btn-warning">New Snippet</a></li>
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="/team"><i class="fa fa-users"></i> <span>Team</span></a></li>
-        <li class="header">LABELS<div class="pull-right"><a href="labels.php"><i class="fa fa-pencil" aria-hidden="true"></i></a></div></li>
+        <li class="header">LABELS<div class="pull-right"><a href="/labels"><i class="fa fa-pencil" aria-hidden="true"></i></a></div></li>
         <li><a href="search.php?q=<3"><i class="fa fa-heart text-red"></i> <span>Favourites</span></a></li>
         <?php 
 	    	$labels = mysqli_query($mysqli, "SELECT * FROM labels ORDER BY label_name");
@@ -119,7 +119,7 @@
 			$label = new Label();
 			$label->set_id($row_labels['label_id']);
 	    ?>
-        <?php if($label->is_visible($user->get_id())) { ?><li><a href="/search/%23<?php echo str_replace(' ', '_', $label->get_name()); ?>"><i class="fa fa-circle" aria-hidden="true" style="color: <?php echo $label->get_hex(); ?>;"></i> <span><?php echo $label->get_name(); ?></span></a></li><?php } ?>
+        <?php if($label->is_visible($user->get_id())) { ?><li><a href="/search?q=%23<?php echo str_replace(' ', '_', $label->get_name()); ?>"><i class="fa fa-circle" aria-hidden="true" style="color: <?php echo $label->get_hex(); ?>;"></i> <span><?php echo $label->get_name(); ?></span></a></li><?php } ?>
         <?php 
 	        }
 	    ?>

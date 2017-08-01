@@ -43,7 +43,7 @@ class Snippet extends Model {
 		$id = $this->id;
 		$snippet_description = mysqli_query($this->mysqli, "SELECT snippet_description FROM snippets WHERE snippet_id = $id");
 		if ($snippet_description && $row_snippets = mysqli_fetch_array($snippet_description, MYSQLI_ASSOC)) {
-			return htmlentities($row_snippets['snippet_description']);	
+			return $row_snippets['snippet_description'];	
 		}
 	}
 	
