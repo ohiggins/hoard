@@ -76,7 +76,7 @@ $snippets = mysqli_query($mysqli, "SELECT * FROM snippets WHERE snippet_author =
 						 
 					</a>
 				</li>
-		<?
+		<?php
 			    if ($i == 0) { $startingid = $snippet->get_id(); }
 			    $i = $i + 1;
 			}
